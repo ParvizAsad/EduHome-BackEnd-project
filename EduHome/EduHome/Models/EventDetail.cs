@@ -1,4 +1,4 @@
-﻿using EduHome_Backend.Models;
+﻿using EduHome.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EduHome.Models
@@ -9,7 +9,7 @@ namespace EduHome.Models
 
         public string Description { get; set; }
         public string ReplyText { get; set; }
-        [ForeignKey("Event")]
+        [ForeignKey(nameof(Event))]
         public int EventID { get; set; }
         public Event Event { get; set; }
     }

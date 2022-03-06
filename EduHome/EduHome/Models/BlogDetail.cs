@@ -1,4 +1,4 @@
-﻿using EduHome_Backend.Models;
+﻿using EduHome.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,7 +12,7 @@ namespace EduHome.Models
 
         [Required(ErrorMessage = "Boş saxlanıla Bilməz!")]
         public string LeaveDescription { get; set; }
-        [ForeignKey("Blog")]
+        [ForeignKey(nameof(Blog))]
         public int BlogID { get; set; }
         public Blog Blog { get; set; }
     }

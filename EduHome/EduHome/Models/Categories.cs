@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace EduHome_Backend.Models
+namespace EduHome.Models
 {
     public class Categories
     {

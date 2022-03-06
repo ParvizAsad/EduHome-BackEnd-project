@@ -1,4 +1,4 @@
-﻿using EduHome_Backend.Models;
+﻿using EduHome.Models;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -42,7 +42,7 @@ namespace EduHome.Models
         [Required(ErrorMessage = "Boş saxlanıla bilməz!")]
         public double Price { get; set; }
         public bool IsDeleted { get; set; }
-        [ForeignKey("Course")]
+        [ForeignKey(nameof(Course))]
         public int CourseID { get; set; }
         public Course Course { get; set; }
     }

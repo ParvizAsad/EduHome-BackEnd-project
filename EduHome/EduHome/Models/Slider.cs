@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EduHome_Backend.Models
+namespace EduHome.Models
 {
     public class Slider
     {

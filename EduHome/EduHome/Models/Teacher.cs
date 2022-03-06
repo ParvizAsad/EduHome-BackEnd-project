@@ -1,7 +1,7 @@
 ﻿using EduHome.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace EduHome_Backend.Models
+namespace EduHome.Models
 {
     public class Teacher
     {

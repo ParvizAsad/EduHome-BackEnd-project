@@ -1,4 +1,4 @@
-﻿using EduHome_Backend.Models;
+﻿using EduHome.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -49,7 +49,7 @@ namespace EduHome.Models
         [Required(ErrorMessage = "Boş saxlanıla Bilməz!"), MaxLength(150, ErrorMessage = "Max 150 simvol istifadə edilə bilər!")]
         public string AboutTeacher { get; set; }
 
-        [ForeignKey("Teacher")]
+        [ForeignKey(nameof(Teacher))]
         public int TeaacherID { get; set; }
         public Teacher Teaacher { get; set; }
     }

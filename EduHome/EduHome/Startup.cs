@@ -1,4 +1,4 @@
-using EduHome_Backend.DataAccessLayer;
+using EduHome.DataAccessLayer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;

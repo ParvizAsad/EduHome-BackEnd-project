@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EduHome_Backend.Models
+namespace EduHome.Models
 {
     public class CourseCategories
     {
