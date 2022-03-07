@@ -30,6 +30,7 @@ namespace EduHome.DataAccessLayer
         public DbSet<Speaker> Speakers { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<TeacherDetail> TeacherDetails { get; set; }
+        public DbSet<TeacherCategory> TeacherCategorys { get; set; }
         public DbSet<Testimontial> Testimontials { get; set; }
 
 

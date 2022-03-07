@@ -3,6 +3,34 @@
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-<a class="btn btn-success" asp-controller="Course" asp-action="ExportFile">
+<a class="btn btn-primary" asp-controller="Course" asp-action="ExportFile">
     Export Files
 </a>
+<a class="btn btn-success" asp-controller="Course" asp-action="Create">
+    Create
+</a>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Teacher List</h4>
+                <div class="table-responsive">
+                    <table id="tab" class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>New York</td>
+                                <td>59</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

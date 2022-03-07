@@ -1,0 +1,81 @@
+﻿@*@model Course
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create Category</h4>
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label asp-for="Name" >Name</label>
+                        <textarea  class="form-control"  placeholder="Name" asp-for="Name" rows="4"></textarea>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                    <label asp-for="Photo">Photo</label>
+                    <input class="form-control" placeholder="Photo" asp-for="Photo" accept="image/*">
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="Description" >Description</label>
+                        <textarea class="form-control" placeholder="Description" asp-for="Description" rows="4"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="AboutDescription" >AboutDescription</label>
+                        <textarea class="form-control" placeholder="AboutDescription" asp-for="AboutDescription" rows="4"></textarea>
+                        <span asp-validation-for="AboutDescription" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="CertificaitonDescription" >CertificaitonDescription</label>
+                        <textarea class="form-control" placeholder="CertificaitonDescription" asp-for="CertificaitonDescription" rows="4"></textarea>
+                        <span asp-validation-for="CertificaitonDescription" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="StartDay" >StartDay</label>
+                        <textarea class="form-control" placeholder="StartDay" asp-for="StartDay" rows="4"></textarea>
+                        <span asp-validation-for="StartDay" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="DurationTime" >DurationTime</label>
+                        <textarea class="form-control" placeholder="DurationTime" asp-for="DurationTime" rows="4"></textarea>
+                        <span asp-validation-for="DurationTime" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ApplyDescription" >ApplyDescription</label>
+                        <textarea class="form-control" placeholder="ApplyDescription" asp-for="ApplyDescription" rows="4"></textarea>
+                        <span asp-validation-for="ApplyDescription" class="text-danger"></span>
+                    </div>
+
+
+
+
+
+
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <a asp-action="Index" class="btn btn-light">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationPartial" />
+    <partial name="_EditorPartial" />
+}
+
+*@
