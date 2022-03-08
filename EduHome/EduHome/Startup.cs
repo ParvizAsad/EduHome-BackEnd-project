@@ -1,4 +1,5 @@
 using EduHome.DataAccessLayer;
+using FrontToBack.Areas.Admin.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -39,6 +41,7 @@ namespace EduHome
             });
 
             services.AddMvc().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            Constants.ImageFolderPath = Path.Combine(_environment.WebRootPath, "img");
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

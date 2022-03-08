@@ -202,6 +202,9 @@ namespace EduHome.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("CategoriesID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -218,6 +221,8 @@ namespace EduHome.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoriesID");
 
                     b.ToTable("Courses");
                 });
@@ -251,18 +256,21 @@ namespace EduHome.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AboutDescription")
-                        .HasColumnType("int");
+                    b.Property<string>("AboutDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ApplyDescription")
-                        .HasColumnType("int");
+                    b.Property<string>("ApplyDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Assestments")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CertificaitonDescription")
-                        .HasColumnType("int");
+                    b.Property<string>("CertificaitonDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CourseID")
                         .HasColumnType("int");
@@ -719,6 +727,13 @@ namespace EduHome.Migrations
                     b.Navigation("Blog");
                 });
 
+            modelBuilder.Entity("EduHome.Models.Course", b =>
+                {
+                    b.HasOne("EduHome.Models.Categories", null)
+                        .WithMany("Courses")
+                        .HasForeignKey("CategoriesID");
+                });
+
             modelBuilder.Entity("EduHome.Models.CourseCategories", b =>
                 {
                     b.HasOne("EduHome.Models.Categories", "Categories")
@@ -845,6 +860,8 @@ namespace EduHome.Migrations
                     b.Navigation("BlogCategories");
 
                     b.Navigation("CourseCategories");
+
+                    b.Navigation("Courses");
 
                     b.Navigation("EventCategories");
 

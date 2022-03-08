@@ -178,3 +178,5 @@ D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net
 D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Category\ExportFile.cshtml.g.cs
 D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Category\Details.cshtml.g.cs
 D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Category\Update.cshtml.g.cs
+D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Category\Delete.cshtml.g.cs
+D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Course\Update.cshtml.g.cs

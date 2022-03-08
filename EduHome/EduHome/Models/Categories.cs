@@ -9,8 +9,9 @@ namespace EduHome.Models
 
         [Required]
         public string Name { get; set; }
-        public bool IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }=false;
         public ICollection<CourseCategories> CourseCategories { get; set; }
+        public ICollection<Course> Courses { get; set; }
         public ICollection<EventCategories> EventCategories { get; set; }
         public ICollection<TeacherCategory> TeacherCategory { get; set; }
         public ICollection<BlogCategories> BlogCategories { get; set; }

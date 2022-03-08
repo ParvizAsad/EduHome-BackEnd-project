@@ -23,7 +23,7 @@ namespace EduHome.Areas.Admin.Controllers
             int take = 10;
             ViewBag.totalpage = Math.Ceiling((decimal)_dbContext.Categories.Count() / take);
             ViewBag.currentpage = page;
-            var categories = await _dbContext.Categories.Skip((page - 1) * take).Take(take).ToListAsync();
+            var categories = await _dbContext.Categories.Where(x=>x.IsDeleted==false).Skip((page - 1) * take).Take(take).ToListAsync();
             return View(categories);
         }
 
@@ -79,7 +79,9 @@ namespace EduHome.Areas.Admin.Controllers
             if (id == null)
                 return NotFound();
 
-            var category = await _dbContext.Categories.FindAsync(id);
+            var category = await _dbContext.Categories
+                .Where(x => x.ID == id && x.IsDeleted == false)
+                .FirstOrDefaultAsync();
             if (category == null)
                 return NotFound();
 
@@ -98,7 +100,7 @@ namespace EduHome.Areas.Admin.Controllers
             if (category == null)
                 return NotFound();
 
-            _dbContext.Categories.Remove(category);
+            category.IsDeleted = true;
             await _dbContext.SaveChangesAsync();
 
 
@@ -106,6 +108,14 @@ namespace EduHome.Areas.Admin.Controllers
 
         }
 
+        //public IActionResult Delete(int id)
+        //{
+        //    var isExist = _dbContext.Categories.FirstOrDefault(x => x.ID == id);
+        //    if (isExist == null) return Json(new { status = 404 });
+        //    _dbContext.Categories.Remove(isExist);
+        //    _dbContext.SaveChanges();
+        //    return Json(new { status = 200 });
+        //}
         public async Task<IActionResult> Update(int? id)
         {
             if (id == null)

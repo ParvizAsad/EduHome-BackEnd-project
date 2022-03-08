@@ -1,4 +1,4 @@
-﻿@*@model Course
+﻿@model Course
 @{
     ViewData["Title"] = "Create";
 }
@@ -7,7 +7,7 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Create Category</h4>
+                <h4 class="card-title">Create Course</h4>
                 <form class="forms-sample" method="post" enctype="multipart/form-data">
 
                     <div class="form-group">
@@ -17,9 +17,9 @@
                     </div>
 
                     <div class="form-group">
-                    <label asp-for="Photo">Photo</label>
-                    <input class="form-control" placeholder="Photo" asp-for="Photo" accept="image/*">
-                    <span asp-validation-for="Photo" class="text-danger"></span>
+                        <label asp-for="Photo">Photo</label>
+                        <input class="form-control" placeholder="Photo" asp-for="Photo" accept="image/*">
+                        <span asp-validation-for="Photo" class="text-danger"></span>
                     </div>
 
 
@@ -30,40 +30,85 @@
                     </div>
 
                     <div class="form-group">
-                        <label asp-for="AboutDescription" >AboutDescription</label>
-                        <textarea class="form-control" placeholder="AboutDescription" asp-for="AboutDescription" rows="4"></textarea>
-                        <span asp-validation-for="AboutDescription" class="text-danger"></span>
+                        <label asp-for="CourseDetail.AboutDescription" >About Description</label>
+                        <textarea class="form-control" placeholder="About Description" asp-for="CourseDetail.AboutDescription" rows="4"></textarea>
+                        <span asp-validation-for="CourseDetail.AboutDescription" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
-                        <label asp-for="CertificaitonDescription" >CertificaitonDescription</label>
-                        <textarea class="form-control" placeholder="CertificaitonDescription" asp-for="CertificaitonDescription" rows="4"></textarea>
-                        <span asp-validation-for="CertificaitonDescription" class="text-danger"></span>
+                        <label asp-for="CourseDetail.CertificaitonDescription" >Certificaiton Description</label>
+                        <textarea class="form-control" placeholder="Certificaiton Description" asp-for="CourseDetail.CertificaitonDescription" rows="4"></textarea>
+                        <span asp-validation-for="CourseDetail.CertificaitonDescription" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
-                        <label asp-for="StartDay" >StartDay</label>
-                        <textarea class="form-control" placeholder="StartDay" asp-for="StartDay" rows="4"></textarea>
-                        <span asp-validation-for="StartDay" class="text-danger"></span>
+                        <label asp-for="CourseDetail.StartDay" >Start Day</label>
+                        <input type="date" class="form-control" placeholder="Start Day" asp-for="CourseDetail.StartDay">
+                        <span asp-validation-for="CourseDetail.StartDay" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
-                        <label asp-for="DurationTime" >DurationTime</label>
-                        <textarea class="form-control" placeholder="DurationTime" asp-for="DurationTime" rows="4"></textarea>
-                        <span asp-validation-for="DurationTime" class="text-danger"></span>
+                        <label asp-for="CourseDetail.DurationTime" >Duration Time</label>
+                        <input type="time" class="form-control" placeholder="Duration Time" asp-for="CourseDetail.DurationTime">
+                        <span asp-validation-for="CourseDetail.DurationTime" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
-                        <label asp-for="ApplyDescription" >ApplyDescription</label>
-                        <textarea class="form-control" placeholder="ApplyDescription" asp-for="ApplyDescription" rows="4"></textarea>
-                        <span asp-validation-for="ApplyDescription" class="text-danger"></span>
+                        <label asp-for="CourseDetail.ApplyDescription" >Apply Description</label>
+                        <textarea class="form-control" placeholder="Apply Description" asp-for="CourseDetail.ApplyDescription" rows="4"></textarea>
+                        <span asp-validation-for="CourseDetail.ApplyDescription" class="text-danger"></span>
+                    </div>
+
+                      <div class="form-group">
+                        <label asp-for="CourseDetail.LessonDurationTime" >Lesson Duration Time</label>
+                        <textarea class="form-control" placeholder="Lesson Duration Time" asp-for="CourseDetail.LessonDurationTime" rows="4"></textarea>
+                        <span asp-validation-for="CourseDetail.LessonDurationTime" class="text-danger"></span>
+                    </div>
+
+                    
+                      <div class="form-group">
+                        <label asp-for="CourseDetail.SkillLevel" >Skill Level</label>
+                        <textarea class="form-control" placeholder="Skill Level" asp-for="CourseDetail.SkillLevel" rows="4"></textarea>
+                        <span asp-validation-for="CourseDetail.SkillLevel" class="text-danger"></span>
+                    </div>
+
+                    
+                      <div class="form-group">
+                        <label asp-for="CourseDetail.Language" >Language</label>
+                        <textarea class="form-control" placeholder="Language" asp-for="CourseDetail.Language" rows="4"></textarea>
+                        <span asp-validation-for="CourseDetail.Language" class="text-danger"></span>
+                    </div>
+
+                    
+                      <div class="form-group">
+                        <label asp-for="CourseDetail.studentCapacity" >Student Capacity</label>
+                        <textarea class="form-control" placeholder="Student Capacity" asp-for="CourseDetail.studentCapacity" rows="4"></textarea>
+                        <span asp-validation-for="CourseDetail.studentCapacity" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="CourseDetail.Assestments" >Assestments</label>
+                        <textarea class="form-control" placeholder="Assestments" asp-for="CourseDetail.Assestments" rows="4"></textarea>
+                        <span asp-validation-for="CourseDetail.Assestments" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="CourseDetail.Price" >Price</label>
+                        <textarea class="form-control" placeholder="Price" asp-for="CourseDetail.Price" rows="4"></textarea>
+                        <span asp-validation-for="CourseDetail.Price" class="text-danger"></span>
                     </div>
 
 
-
-
-
-
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control" name="categoryId" id="ParentCategory">
+                            <option value="0">--Select Category--</option>
+                        @foreach (var item in ViewBag.Categories)
+                        {
+                            <option value="@item.ID">@item.Name</option>
+                        }
+                    </select>
+                </div>
 
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                     <a asp-action="Index" class="btn btn-light">Cancel</a>
@@ -75,7 +120,6 @@
 
 @section Scripts{
     <partial name="_ValidationPartial" />
-    <partial name="_EditorPartial" />
+    <partial name="_CKEditorPartial" />
 }
 
-*@

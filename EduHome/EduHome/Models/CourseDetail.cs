@@ -10,13 +10,13 @@ namespace EduHome.Models
         public int ID { get; set; }
 
         [Required(ErrorMessage = "Boş saxlanıla bilməz!")]
-        public int AboutDescription { get; set; }
+        public string AboutDescription { get; set; }
 
         [Required(ErrorMessage = "Boş saxlanıla bilməz!")]
-        public int ApplyDescription { get; set; }
+        public string ApplyDescription { get; set; }
 
         [Required(ErrorMessage = "Boş saxlanıla bilməz!")]
-        public int CertificaitonDescription { get; set; }
+        public string CertificaitonDescription { get; set; }
 
         [Required(ErrorMessage = "Boş saxlanıla bilməz!")]
         public DateTime StartDay { get; set; }
