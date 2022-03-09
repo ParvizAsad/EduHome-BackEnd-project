@@ -1,0 +1,23 @@
+﻿@model Speaker
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+               <img src="~/img/@Model.ImagePath" style="width: 150px; height: 150px;" />
+                <h4 class="card-title">Name: @Html.Raw(@Model.Name)</h4>
+                <h4 class="card-title">Job: @Html.Raw(@Model.Job)</h4>
+                <p class="text-danger">Are you sure want to delete?</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <form method="post" class="forms-sample">
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+    <a class="btn btn-light" asp-action="Index">Cancel</a>
+</div>

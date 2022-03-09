@@ -12,6 +12,11 @@ namespace EduHome.Models
         public string VcontactUrl { get; set; }
         public string TwitterUrl { get; set; }
         public string PinterestUrl { get; set; }
+        public string Adress { get; set; }
+        public string Number1 { get; set; }
+        public string Number2 { get; set; }
+        public int Number3 { get; set; }
+
         [NotMapped]
         public IFormFile Photo { get; set; }
 

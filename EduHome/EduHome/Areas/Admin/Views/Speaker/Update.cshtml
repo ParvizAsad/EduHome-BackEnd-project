@@ -1,0 +1,38 @@
+﻿@model Speaker
+@{
+    ViewData["Title"] = "Update";
+}
+
+<div class="container">
+    <h2>Update Category</h2>
+    <form method="post">
+        <img src="~/img/@Model.ImagePath" style="width: 150px; height: 150px;" />
+
+        <div class="mb-3">
+            <label asp-for="@Model.Photo" class="form-label">Speaker Photo</label>
+             <textarea class="form-control" placeholder="@Model.Photo" asp-for="@Model.Photo" rows="4"></textarea>
+            <span class="text-danger" asp-validation-for="@Model.Photo"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="@Model.Name" class="form-label">Speaker name</label>
+            <textarea class="form-control" placeholder="@Model.Name" asp-for="@Model.Name" rows="4"></textarea>
+            <span class="text-danger" asp-validation-for="@Model.Name"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="@Model.Job" class="form-label">Speaker job</label>
+            <textarea class="form-control" placeholder="@Model.Job" asp-for="@Model.Job" rows="4"></textarea>
+            <span class="text-danger" asp-validation-for="@Model.Job"></span>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationPartial" />
+    <partial name="_CKEditorPartial" />
+}
+

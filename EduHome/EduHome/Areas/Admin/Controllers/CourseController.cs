@@ -30,7 +30,7 @@ namespace EduHome.Areas.Admin.Controllers
             int take = 10;
             ViewBag.totalpage = Math.Ceiling((decimal)_dbContext.Courses.Count() / take);
             ViewBag.currentpage = page;
-            var courses = await _dbContext.Courses.Where(x=> x.IsDeleted==false).Skip((page - 1) * take).Take(take).ToListAsync();
+            var courses = await _dbContext.Courses.Where(x=>x.IsDeleted==false).Skip((page - 1) * take).Take(take).ToListAsync();
             return View(courses);
         }
 
@@ -39,7 +39,7 @@ namespace EduHome.Areas.Admin.Controllers
             return View();
         }
 
-        public async Task<IActionResult> CreateAsync()
+        public async Task<IActionResult> Create()
         {
             var categories = await _dbContext.Categories.ToListAsync();
             ViewBag.Categories = categories;
@@ -50,8 +50,8 @@ namespace EduHome.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Course course, int categoryId)
         {
-          
-            var categories = await _dbContext.Categories.Where(x=> x.IsDeleted==false).ToListAsync();
+
+            var categories = await _dbContext.Categories.Where(x => x.IsDeleted == false).ToListAsync();
             ViewBag.Categories = categories;
 
             if (categoryId == 0)
@@ -111,16 +111,28 @@ namespace EduHome.Areas.Admin.Controllers
 
         public async Task<IActionResult> Delete(int? id)
         {
+
             if (id == null)
                 return NotFound();
 
-            var course = await _dbContext.Courses
-                .Where(x => x.Id == id && x.IsDeleted == false)
+            var category = await _dbContext.Courses
+                .Where(x => x.Id == id && x.IsDeleted==false)
                 .FirstOrDefaultAsync();
-            if (course == null)
+            if (category == null)
                 return NotFound();
 
-            return View(course);
+            return View(category);
+
+            //if (id == null)
+            //    return NotFound();
+
+            //var course = await _dbContext.Courses
+            //    .Where(x => x.Id == id && x.IsDeleted == false)
+            //    .FirstOrDefaultAsync();
+            //if (course == null)
+            //    return NotFound();
+
+            //return View(course);
         }
 
         [HttpPost]
@@ -141,6 +153,10 @@ namespace EduHome.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
 
         }
+
+
+
+
 
 
     }

@@ -52,13 +52,13 @@ namespace EduHome.Areas.Admin.Controllers
 
             if (!slider.Photo.IsImage())
             {
-                ModelState.AddModelError("Photos", $"{slider.Photo.FileName} - Yuklediyiniz shekil olmalidir.");
+                ModelState.AddModelError("Photo", $"{slider.Photo.FileName} - Yuklediyiniz shekil olmalidir.");
                 return View();
             }
 
             if (!slider.Photo.IsAllowedSize(1))
             {
-                ModelState.AddModelError("Photos", $"{slider.Photo.FileName} - shekil 1 mb-dan az olmalidir.");
+                ModelState.AddModelError("Photo", $"{slider.Photo.FileName} - shekil 1 mb-dan az olmalidir.");
                 return View();
             }
 
