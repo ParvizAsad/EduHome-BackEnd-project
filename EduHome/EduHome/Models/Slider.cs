@@ -12,7 +12,7 @@ namespace EduHome.Models
         public string Path { get; set; }
 
         [NotMapped]
-        [Required]
-        public IFormFile[] Photos { get; set; }
+      
+        public IFormFile Photo { get; set; }
     }
 }

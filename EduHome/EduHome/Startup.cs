@@ -1,5 +1,5 @@
+using EduHome.Areas.Admin.Data;
 using EduHome.DataAccessLayer;
-using FrontToBack.Areas.Admin.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -37,7 +37,10 @@ namespace EduHome
 
             services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseSqlServer(connectonString);
+                options.UseSqlServer(connectonString, builder =>
+                {
+                    builder.MigrationsAssembly(nameof(EduHome));
+                });
             });
 
             services.AddMvc().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);

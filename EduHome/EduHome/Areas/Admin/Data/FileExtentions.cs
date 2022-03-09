@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace FrontToBack.Areas.Admin.Data
+namespace EduHome.Areas.Admin.Data
 {
     public static class FileExtentions
     {

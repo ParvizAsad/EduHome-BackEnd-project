@@ -1,0 +1,24 @@
+﻿@model Slider
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <img src="~/img/@Model.Path" style="width: 150px; height: 150px;" />
+                <h4>Title: @Model.Title</h4>
+                <h4>SubTitle: @Model.SubTitle</h4>
+                <p class="text-danger">Are you sure to delets?</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <form class="forms-sample" method="post">
+        <button type="submit" class="btn btn-danger mr-2">Submit</button>
+    </form>
+    <button class="btn btn-light" asp-action="Index">Cancel</button>
+</div>
+
