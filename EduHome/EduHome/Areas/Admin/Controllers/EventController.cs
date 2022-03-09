@@ -1,8 +1,11 @@
 ﻿using EduHome.DataAccessLayer;
+using EduHome.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,7 +32,129 @@ namespace EduHome.Areas.Admin.Controllers
             return View(events);
         }
 
+        public async Task<IActionResult> Create()
+        {
+            var categories = await _dbContext.Categories.ToListAsync();
+            ViewBag.Categories = categories;
 
+            var spiker = await _dbContext.Speakers.ToListAsync();
+            ViewBag.Speakers = spiker;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Event events, int categoryId, int speakerId)
+        {
+
+            var categories = await _dbContext.Categories.Where(x => x.IsDeleted == false).ToListAsync();
+            ViewBag.Categories = categories;
+
+            var spiker = await _dbContext.Speakers.ToListAsync();
+            ViewBag.Speakers = spiker;
+
+            if (categoryId == 0)
+            {
+                ModelState.AddModelError("Categories", "Parent kateqoriyasi sechin.");
+                return View();
+            }
+
+            var parentCategory = categories.FirstOrDefault(x => x.ID == categoryId);
+            if (parentCategory == null)
+                return BadRequest();
+
+            var isExistBlog = await _dbContext.Courses.AnyAsync(x => x.Name.ToLower() == events.Title.ToLower());
+
+            if (isExistBlog)
+            {
+                ModelState.AddModelError("Title", "Bu title-da blog mövcuddur!");
+                return View();
+            }
+
+            if (!events.Photo.ContentType.Contains("image"))
+            {
+                ModelState.AddModelError("Photo", "Yükləməyiniz şəkil olmalıdır");
+                return View();
+            }
+
+            if (events.Photo.Length > 1024 * 1000)
+            {
+                ModelState.AddModelError("Photo", "Yükləməyiniz şəkil 1Mb-dan az olmalıdır");
+                return View();
+            }
+
+            var webRootPath = _environment.WebRootPath;
+            var fileName = $"{Guid.NewGuid()}-{events.Photo.FileName}";
+            var path = Path.Combine(webRootPath, "img", fileName);
+
+            var fileStream = new FileStream(path, FileMode.CreateNew);
+            await events.Photo.CopyToAsync(fileStream);
+
+            var eventCategories = new List<EventCategories>();
+
+            var eventCategory = new EventCategories
+            {
+                EventID = events.ID,
+                CategoryID = categoryId
+            };
+            eventCategories.Add(eventCategory);
+
+            events.EventCategories = eventCategories;
+
+
+
+
+            var eventSpeakers = new List<EventSpeaker>();
+
+            var eventSpeaker = new EventSpeaker
+            {
+                EventID = events.ID,
+                SpikerID = speakerId
+            };
+            eventSpeakers.Add(eventSpeaker);
+
+            events.EventSpeaker = eventSpeakers;
+
+
+            events.EventImage = fileName;
+            await _dbContext.Events.AddAsync(events);
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var events = await _dbContext.Events
+                .Where(x => x.ID == id && x.IsDeleted == false)
+                .FirstOrDefaultAsync();
+            if (events == null)
+                return NotFound();
+
+            return View(events);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("Delete")]
+        public async Task<IActionResult> DeleteEvent(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var events = await _dbContext.Events.FindAsync(id);
+            if (events == null)
+                return NotFound();
+
+            events.IsDeleted = true;
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+
+        }
 
     }
 }

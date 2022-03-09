@@ -20,6 +20,7 @@ namespace EduHome.Models
         public string Location { get; set; }
       
         public bool IsDeleted { get; set; }
+        public EventDetail EventDetail { get; set; }
 
         public ICollection<EventCategories> EventCategories { get; set; }
         public ICollection<EventSpeaker> EventSpeaker { get; set; }
