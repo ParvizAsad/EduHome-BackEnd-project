@@ -1,7 +1,8 @@
 ﻿@model Teacher
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Update";
 }
+
 
 <div class="row">
     <div class="col-md-12 grid-margin stretch-card">
@@ -15,6 +16,7 @@
                         <textarea  class="form-control"  placeholder="Name" asp-for="Name" rows="4"></textarea>
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
+                    <img src="~/img/@Model.ImagePath" style="width: 150px; height: 150px;" />
 
                     <div class="form-group">
                         <label asp-for="Photo">Photo</label>
@@ -113,8 +115,8 @@
                         <span asp-validation-for="TeacherDetail.PhoneNumbers" class="text-danger"></span>
                     </div>       
                     <div class="form-group">
-                        <label asp-for="TeacherDetail.Email">Email Adress</label>
-                        <input class="form-control" placeholder="Email" asp-for="TeacherDetail.Email" >
+                        <label asp-for="TeacherDetail.Email">TeacherDetail.LanguagePoint</label>
+                        <input class="form-control" placeholder="TeacherDetail.Email" asp-for="TeacherDetail.Email" >
                         <span asp-validation-for="TeacherDetail.Email" class="text-danger"></span>
                     </div>   
                     
@@ -146,7 +148,7 @@
                             <option value="0">--Select Category--</option>
                         @foreach (var item in ViewBag.Categories)
                         {
-                            <option value="@item.ID">@item.Name</option>
+                            <option value="@item.ID" selected="ViewBag.courseCategories">@item.Name</option>
                         }
                     </select>
                 </div>
@@ -163,4 +165,5 @@
     <partial name="_ValidationPartial" />
     <partial name="_CKEditorPartial" />
 }
+
 

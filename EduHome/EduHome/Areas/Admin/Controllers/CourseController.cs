@@ -138,7 +138,7 @@ namespace EduHome.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Delete")]
-        public async Task<IActionResult> DeleteCategory(int? id)
+        public async Task<IActionResult> DeleteCourse(int? id)
         {
             if (id == null)
                 return NotFound();
@@ -154,5 +154,77 @@ namespace EduHome.Areas.Admin.Controllers
 
         }
 
+        public async Task<IActionResult> Update(int? id)
+        {
+            var categories = await _dbContext.Categories.Where(x => x.IsDeleted == false).ToListAsync();
+            ViewBag.Categories = categories;
+
+
+            var courseCategories = await _dbContext.CourseCategories.Where(x => x.CourseID == id).ToListAsync();
+            ViewBag.courseCategories = courseCategories;
+
+            var courseDetail = await _dbContext.CourseDetails.Where(x => x.CourseID == id).ToListAsync();
+            ViewBag.courseDetail = courseDetail;
+
+            if (id == null)
+                return NotFound();
+
+            var course = await _dbContext.Courses.FirstOrDefaultAsync(x => x.Id == id);
+            if (course == null)
+                return NotFound();
+
+            return View(course);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(int? id, Course course)
+        {
+            var categories = await _dbContext.Categories.Where(x => x.IsDeleted == false).ToListAsync();
+            ViewBag.Categories = categories;
+
+            var courseCategories = await _dbContext.CourseCategories.Where(x => x.CourseID == id).ToListAsync();
+            ViewBag.courseCategories = courseCategories;
+
+            var courseDetail = await _dbContext.CourseDetails.Where(x => x.CourseID == id).ToListAsync();
+            ViewBag.courseDetail = courseDetail;
+
+            if (id == null)
+                return NotFound();
+
+            if (id != course.Id)
+                return BadRequest();
+
+            var existCourse = await _dbContext.Courses.FindAsync(id);
+            if (existCourse == null)
+                return NotFound();
+
+            if (course.Photo != null)
+            {
+                if (!course.Photo.IsImage())
+                {
+                    ModelState.AddModelError("Photo", "Yuklediyiniz shekil olmalidir.");
+                    return View(existCourse);
+                }
+
+                if (!course.Photo.IsAllowedSize(1))
+                {
+                    ModelState.AddModelError("Photo", "1 mb-dan az olmalidir.");
+                    return View(existCourse);
+                }
+
+                var path = Path.Combine(Constants.ImageFolderPath, existCourse.ImagePath);
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+                var fileName = await course.Photo.GenerateFile(Constants.ImageFolderPath);
+                existCourse.ImagePath = fileName;
+            }
+
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

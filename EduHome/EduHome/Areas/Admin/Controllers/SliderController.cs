@@ -155,7 +155,6 @@ namespace EduHome.Areas.Admin.Controllers
             existSliderImage.Path = fileName;
             }
            
-
             existSliderImage.SubTitle=slider.SubTitle;
             existSliderImage.Title=slider.Title;
 

@@ -153,5 +153,78 @@ namespace EduHome.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
 
         }
+
+        public async Task<IActionResult> Update(int? id)
+        {
+            var categories = await _dbContext.Categories.Where(x => x.IsDeleted == false).ToListAsync();
+            ViewBag.Categories = categories;
+
+            var blogCategories = await _dbContext.BlogCategories.Where(x => x.BlogID == id).ToListAsync();
+            ViewBag.blogCategories = blogCategories;
+
+            var blogDetail = await _dbContext.BlogDetails.Where(x => x.BlogID == id).ToListAsync();
+            ViewBag.blogDetail = blogDetail;
+
+            if (id == null)
+                return NotFound();
+
+            var blog = await _dbContext.Blogs.FirstOrDefaultAsync(x => x.Id == id);
+            if (blog == null)
+                return NotFound();
+
+            return View(blog);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(int? id, Blog blog)
+        {
+            var categories = await _dbContext.Categories.Where(x => x.IsDeleted == false).ToListAsync();
+            ViewBag.Categories = categories;
+
+            var blogCategories = await _dbContext.BlogCategories.Where(x => x.BlogID == id).ToListAsync();
+            ViewBag.blogCategories = blogCategories;
+
+            var blogDetail = await _dbContext.BlogDetails.Where(x => x.BlogID == id).ToListAsync();
+            ViewBag.blogDetail = blogDetail;
+
+            if (id == null)
+                return NotFound();
+
+            if (id != blog.Id)
+                return BadRequest();
+
+            var existBlog = await _dbContext.Blogs.FindAsync(id);
+            if (existBlog == null)
+                return NotFound();
+
+            if (blog.Photo != null)
+            {
+                if (!blog.Photo.IsImage())
+                {
+                    ModelState.AddModelError("Photo", "Yuklediyiniz shekil olmalidir.");
+                    return View(existBlog);
+                }
+
+                if (!blog.Photo.IsAllowedSize(1))
+                {
+                    ModelState.AddModelError("Photo", "1 mb-dan az olmalidir.");
+                    return View(existBlog);
+                }
+
+                var path = Path.Combine(Constants.ImageFolderPath, existBlog.ImagePath);
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+                var fileName = await blog.Photo.GenerateFile(Constants.ImageFolderPath);
+                existBlog.ImagePath = fileName;
+            }
+
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

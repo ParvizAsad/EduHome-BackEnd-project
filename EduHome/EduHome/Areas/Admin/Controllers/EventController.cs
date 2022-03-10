@@ -1,4 +1,5 @@
-﻿using EduHome.DataAccessLayer;
+﻿using EduHome.Areas.Admin.Data;
+using EduHome.DataAccessLayer;
 using EduHome.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -64,11 +65,11 @@ namespace EduHome.Areas.Admin.Controllers
             if (parentCategory == null)
                 return BadRequest();
 
-            var isExistBlog = await _dbContext.Courses.AnyAsync(x => x.Name.ToLower() == events.Title.ToLower());
+            var isExistBlog = await _dbContext.Events.AnyAsync(x => x.Title.ToLower() == events.Title.ToLower());
 
             if (isExistBlog)
             {
-                ModelState.AddModelError("Title", "Bu title-da blog mövcuddur!");
+                ModelState.AddModelError("Title", "Bu title-da event mövcuddur!");
                 return View();
             }
 
@@ -172,6 +173,84 @@ namespace EduHome.Areas.Admin.Controllers
 
             return View(events);
 
+        }
+
+        public async Task<IActionResult> Update(int? id)
+        {
+            var categories = await _dbContext.Categories.Where(x => x.IsDeleted == false).ToListAsync();
+            ViewBag.Categories = categories;
+
+            var spiker = await _dbContext.Speakers.ToListAsync();
+            ViewBag.Speakers = spiker;
+
+            var eventCategories = await _dbContext.EventCategories.Where(x => x.EventID == id).ToListAsync();
+            ViewBag.eventCategories = eventCategories;
+
+            var eventDetail = await _dbContext.EventDetails.Where(x => x.EventID == id).ToListAsync();
+            ViewBag.eventDetail = eventDetail;
+
+            if (id == null)
+                return NotFound();
+
+            var events = await _dbContext.Events.FirstOrDefaultAsync(x => x.ID == id);
+            if (events == null)
+                return NotFound();
+
+            return View(events);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(int? id, Event events)
+        {
+            var categories = await _dbContext.Categories.Where(x => x.IsDeleted == false).ToListAsync();
+            ViewBag.Categories = categories;
+
+            var spiker = await _dbContext.Speakers.ToListAsync();
+            ViewBag.Speakers = spiker;
+
+            var eventCategories = await _dbContext.EventCategories.Where(x => x.EventID == id).ToListAsync();
+            ViewBag.eventCategories = eventCategories;
+
+            var eventDetail = await _dbContext.EventDetails.Where(x => x.EventID == id).ToListAsync();
+            ViewBag.eventDetail = eventDetail;
+
+            if (id == null)
+                return NotFound();
+
+            if (id != events.ID)
+                return BadRequest();
+
+            var existEvent = await _dbContext.Events.FindAsync(id);
+            if (existEvent == null)
+                return NotFound();
+
+            if (events.Photo != null)
+            {
+                if (!events.Photo.IsImage())
+                {
+                    ModelState.AddModelError("Photo", "Yuklediyiniz shekil olmalidir.");
+                    return View(existEvent);
+                }
+
+                if (!events.Photo.IsAllowedSize(1))
+                {
+                    ModelState.AddModelError("Photo", "1 mb-dan az olmalidir.");
+                    return View(existEvent);
+                }
+
+                var path = Path.Combine(Constants.ImageFolderPath, existEvent.EventImage);
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+                var fileName = await events.Photo.GenerateFile(Constants.ImageFolderPath);
+                existEvent.EventImage = fileName;
+            }
+
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
 
     }

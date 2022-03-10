@@ -145,5 +145,79 @@ namespace EduHome.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
 
         }
+
+        public async Task<IActionResult> Update(int? id)
+        {
+            var categories = await _dbContext.Categories.Where(x => x.IsDeleted == false).ToListAsync();
+            ViewBag.Categories = categories;
+
+
+            var teacherCategories = await _dbContext.TeacherCategorys.Where(x => x.TeacherID == id).ToListAsync();
+            ViewBag.teacherCategories = teacherCategories;
+
+            var teacherDetail = await _dbContext.TeacherDetails.Where(x => x.TeaacherID == id).ToListAsync();
+            ViewBag.teacherDetail = teacherDetail;
+
+            if (id == null)
+                return NotFound();
+
+            var teacher = await _dbContext.Teachers.FirstOrDefaultAsync(x => x.Id == id);
+            if (teacher == null)
+                return NotFound();
+
+            return View(teacher);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(int? id, Teacher teacher)
+        {
+            var categories = await _dbContext.Categories.Where(x => x.IsDeleted == false).ToListAsync();
+            ViewBag.Categories = categories;
+
+            var teacherCategories = await _dbContext.TeacherCategorys.Where(x => x.TeacherID == id).ToListAsync();
+            ViewBag.teacherCategories = teacherCategories;
+
+            var teacherDetail = await _dbContext.TeacherDetails.Where(x => x.TeaacherID == id).ToListAsync();
+            ViewBag.teacherDetail = teacherDetail;
+
+            if (id == null)
+                return NotFound();
+
+            if (id != teacher.Id)
+                return BadRequest();
+
+            var existTeacher = await _dbContext.Teachers.FindAsync(id);
+            if (existTeacher == null)
+                return NotFound();
+
+            if (teacher.Photo != null)
+            {
+                if (!teacher.Photo.IsImage())
+                {
+                    ModelState.AddModelError("Photo", "Yuklediyiniz shekil olmalidir.");
+                    return View(existTeacher);
+                }
+
+                if (!teacher.Photo.IsAllowedSize(1))
+                {
+                    ModelState.AddModelError("Photo", "1 mb-dan az olmalidir.");
+                    return View(existTeacher);
+                }
+
+                var path = Path.Combine(Constants.ImageFolderPath, existTeacher.ImagePath);
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+                var fileName = await teacher.Photo.GenerateFile(Constants.ImageFolderPath);
+                existTeacher.ImagePath = fileName;
+            }
+
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

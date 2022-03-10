@@ -1,0 +1,97 @@
+﻿@model Event
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h1>Update</h1><div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create Event</h4>
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                    <div class="form-group">
+                        <label asp-for="Title" >Title</label>
+                        <textarea  class="form-control"  placeholder="Title" asp-for="Title" rows="4"></textarea>
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <img src="~/img/@Model.EventImage" style="width: 150px; height: 150px;" />
+                    <div class="form-group">
+                        <label asp-for="Photo">Photo</label>
+                        <input class="form-control" placeholder="Photo" asp-for="Photo" accept="image/*">
+                        <span asp-validation-for="Photo" class="text-danger"></span>
+                    </div>   
+
+                    <div class="form-group">
+                        <label asp-for="EventDate">EventDate</label>
+                        <input  type="date" class="form-control" placeholder="EventDate" asp-for="EventDate" >
+                        <span asp-validation-for="EventDate" class="text-danger"></span>
+                    </div>           
+                    
+                    <div class="form-group">
+                        <label asp-for="StartTime">StartTime</label>
+                        <input type="time" class="form-control" placeholder="StartTime" asp-for="StartTime" >
+                        <span asp-validation-for="StartTime" class="text-danger"></span>
+                    </div>   
+                    
+                    <div class="form-group">
+                        <label asp-for="EndTime">EndTime</label>
+                        <input type="time" class="form-control" placeholder="EndTime" asp-for="EndTime" >
+                        <span asp-validation-for="EndTime" class="text-danger"></span>
+                    </div>    
+                    
+                    <div class="form-group">
+                        <label asp-for="Location">Location</label>
+                        <input class="form-control" placeholder="Location" asp-for="Location" >
+                        <span asp-validation-for="Location" class="text-danger"></span>
+                    </div>  
+                    
+                    <div class="form-group">
+                        <label asp-for="EventDetail.Description">Description</label>
+                        <input class="form-control" placeholder="EventDetail.Description" asp-for="EventDetail.Description">
+                        <span asp-validation-for="EventDetail.Description" class="text-danger"></span>
+                    </div>    
+                    
+                    <div class="form-group">
+                        <label asp-for="EventDetail.ReplyText">ReplyText</label>
+                        <input class="form-control" placeholder="EventDetail.ReplyText" asp-for="EventDetail.ReplyText" >
+                        <span asp-validation-for="EventDetail.ReplyText" class="text-danger"></span>
+                    </div>   
+                   
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control" name="categoryId" id="ParentCategory">
+                            <option value="0">--Select Category--</option>
+                        @foreach (var item in ViewBag.Categories)
+                        {
+                            <option value="@item.ID" selected="ViewBag.courseCategories">@item.Name</option>
+                        }
+                    </select>
+                </div>
+
+                
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control" name="speakerId" id="ParentCategory">
+                            <option value="0">--Select Speaker--</option>
+                        @foreach (var item in ViewBag.Speakers)
+                        {
+                            <option value="@item.ID" selected="ViewBag.Speakers">@item.Name</option>
+                        }
+                    </select>
+                </div>
+              
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <a asp-action="Index" class="btn btn-light">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationPartial" />
+    <partial name="_CKEditorPartial" />
+}
+
