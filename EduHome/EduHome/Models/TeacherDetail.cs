@@ -35,9 +35,6 @@ namespace EduHome.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Boş saxlanıla Bilməz!")]
-        public string Faculty { get; set; }
-
-        [Required(ErrorMessage = "Boş saxlanıla Bilməz!")]
         public string Hobies { get; set; }
 
         [Required(ErrorMessage = "Boş saxlanıla Bilməz!")]

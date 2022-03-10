@@ -1,0 +1,79 @@
+﻿@model Blog
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create Course</h4>
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label asp-for="Title">Title</label>
+                        <textarea  class="form-control"  placeholder="Name" asp-for="Title" rows="4"></textarea>
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Photo">Photo</label>
+                        <input class="form-control" placeholder="Photo" asp-for="Photo" accept="image/*">
+                        <span asp-validation-for="Photo" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="Writer" >Writer</label>
+                        <textarea class="form-control" placeholder="Writer" asp-for="Writer" rows="4"></textarea>
+                        <span asp-validation-for="Writer" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Writer" >Writer</label>
+                        <textarea class="form-control" placeholder="Writer" asp-for="Writer" rows="4"></textarea>
+                        <span asp-validation-for="Writer" class="text-danger"></span>
+                    </div>  
+                    
+                    <div class="form-group">
+                        <label asp-for="Date" >Date</label>
+                        <input type="date" class="form-control" placeholder="Date" asp-for="Date" >
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="BlogDetail.Description" >Description</label>
+                        <input  class="form-control" placeholder="BlogDetail.Description" asp-for="BlogDetail.Description" >
+                        <span asp-validation-for="BlogDetail.Description" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label asp-for="BlogDetail.LeaveDescription" >LeaveDescription</label>
+                        <input  class="form-control" placeholder="LeaveDescription" asp-for="BlogDetail.LeaveDescription" >
+                        <span asp-validation-for="BlogDetail.LeaveDescription" class="text-danger"></span>
+                    </div>   
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control" name="categoryId" id="ParentCategory">
+                            <option value="0">--Select Category--</option>
+                        @foreach (var item in ViewBag.Categories)
+                        {
+                            <option value="@item.ID">@item.Name</option>
+                        }
+                    </select>
+                </div>
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <a asp-action="Index" class="btn btn-light">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationPartial" />
+    <partial name="_CKEditorPartial" />
+}
+

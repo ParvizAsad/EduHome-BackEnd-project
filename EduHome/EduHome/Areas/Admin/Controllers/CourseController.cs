@@ -154,10 +154,5 @@ namespace EduHome.Areas.Admin.Controllers
 
         }
 
-
-
-
-
-
     }
 }

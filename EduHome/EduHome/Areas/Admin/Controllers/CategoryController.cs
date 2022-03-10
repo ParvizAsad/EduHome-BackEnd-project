@@ -108,14 +108,6 @@ namespace EduHome.Areas.Admin.Controllers
 
         }
 
-        //public IActionResult Delete(int id)
-        //{
-        //    var isExist = _dbContext.Categories.FirstOrDefault(x => x.ID == id);
-        //    if (isExist == null) return Json(new { status = 404 });
-        //    _dbContext.Categories.Remove(isExist);
-        //    _dbContext.SaveChanges();
-        //    return Json(new { status = 200 });
-        //}
         public async Task<IActionResult> Update(int? id)
         {
             if (id == null)

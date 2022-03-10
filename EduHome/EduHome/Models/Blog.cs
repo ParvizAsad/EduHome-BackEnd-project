@@ -1,6 +1,7 @@
 ﻿using EduHome.Models;
 using Microsoft.AspNetCore.Http;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -21,8 +22,9 @@ namespace EduHome.Models
         [Required(ErrorMessage ="Boş saxlanıla Bilməz!")]
         public DateTime Date { get; set; }
 
-        public int CommentCount { get; set; }
         public BlogDetail BlogDetail { get; set; }
+        public ICollection<BlogCategories> BlogCategories { get; set; }
+        public bool IsDeleted { get; set; } = false;
 
         [NotMapped]
         public IFormFile  Photo { get; set; }

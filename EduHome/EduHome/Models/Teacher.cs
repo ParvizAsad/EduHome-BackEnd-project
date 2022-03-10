@@ -1,5 +1,8 @@
 ﻿using EduHome.Models;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EduHome.Models
 {
@@ -30,5 +33,9 @@ namespace EduHome.Models
         public TeacherDetail TeacherDetail { get; set; }
 
         public bool IsDeleted { get; set; }
+        [NotMapped]
+        public IFormFile Photo { get; set; }
+        public ICollection<TeacherCategory> TeacherCategory { get; set; }
+
     }
 }

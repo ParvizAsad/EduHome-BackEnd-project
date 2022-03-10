@@ -26,7 +26,7 @@ namespace EduHome.Areas.Admin.Controllers
         public async Task<IActionResult> Index(int page = 1)
         {
             int take = 10;
-            ViewBag.totalpage = Math.Ceiling((decimal)_dbContext.Courses.Count() / take);
+            ViewBag.totalpage = Math.Ceiling((decimal)_dbContext.Events.Count() / take);
             ViewBag.currentpage = page;
             var events = await _dbContext.Events.Where(x => x.IsDeleted == false).Skip((page - 1) * take).Take(take).ToListAsync();
             return View(events);
@@ -39,6 +39,7 @@ namespace EduHome.Areas.Admin.Controllers
 
             var spiker = await _dbContext.Speakers.ToListAsync();
             ViewBag.Speakers = spiker;
+
             return View();
         }
 
@@ -153,6 +154,23 @@ namespace EduHome.Areas.Admin.Controllers
             await _dbContext.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
+
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+                return BadRequest();
+
+            var events = await _dbContext.Events.FindAsync(id);
+            var eventdetail= await _dbContext.EventDetails.Where(x=>x.EventID==id).ToListAsync();
+            ViewBag.EventDetail = eventdetail;
+            if (events == null)
+                return NotFound();
+            if (eventdetail == null)
+                return NotFound();
+
+            return View(events);
 
         }
 

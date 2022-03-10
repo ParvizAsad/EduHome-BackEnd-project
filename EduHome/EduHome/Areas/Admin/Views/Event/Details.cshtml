@@ -1,0 +1,24 @@
+﻿@model Event
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Title: @Model.Title</h3>
+                <h6 class="card-title">StartTime @Model.StartTime.ToShortTimeString()</h6>
+                <h6 class="card-title">EndTime @Model.EndTime.ToShortTimeString()</h6>
+                <h6 class="card-title">Location @Model.Location</h6>
+                <h6 class="card-title">EventDate @Model.EventDate.ToShortDateString()</h6>
+
+                @foreach (var item in @ViewBag.EventDetail)
+                {
+                <h6 class="card-title">Location @item.Description</h6>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
