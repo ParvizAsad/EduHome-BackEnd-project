@@ -1,13 +1,16 @@
 ﻿
 @{
-ViewData["Title"] = "Index";
+    HomeViewModel homeVM = Model;
+    ViewData["Title"] = "Index";
 }
 
 <!-- Background Area Start -->
 <section id="slider-container" class="slider-area two"> 
 <div class="slider-owl owl-theme owl-carousel"> 
-<!-- Start Slingle Slide -->
-<div class="single-slide item" style="background-image: url(img/slider/slider2.jpg)">
+    @foreach (var item in homeVM.Sliders)
+   {
+ <!-- Start Slingle Slide -->
+<div class="single-slide item" style="background-image: url(img/slider/@item.Path)">
     <!-- Start Slider Content -->
     <div class="slider-content-area">  
         <div class="container">
@@ -15,8 +18,8 @@ ViewData["Title"] = "Index";
                 <div class="col-md-10 col-md-offset-1"> 
                     <div class="slide-content-wrapper">
                         <div class="slide-content text-center">
-                            <h2>EDUCATION MAKES HUMANITY </h2>
-                            <p>I must explain to you how all this mistaken idea of denouncing pleasure and prsing pain was born and I will give you a complete account of the system  </p>
+                            <h2>@item.Title</h2>
+                            <p>@item.SubTitle </p>
                             <a class="default-btn"asp-controller="About" asp-action="Index">Learn more</a>
                         </div>
                     </div>
@@ -26,49 +29,9 @@ ViewData["Title"] = "Index";
     </div>
     <!-- Start Slider Content -->
 </div>
-<!-- End Slingle Slide -->
-<!-- Start Slingle Slide -->
-<div class="single-slide item" style="background-image: url(img/slider/slider3.jpg)">
-    <!-- Start Slider Content -->
-    <div class="slider-content-area">   
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1"> 
-                    <div class="slide-content-wrapper">
-                        <div class="slide-content text-center">
-                            <h2>EDUCATION MAKES HUMANITY </h2>
-                            <p>I must explain to you how all this mistaken idea of denouncing pleasure and prsing pain was born and I will give you a complete account of the system  </p>
-                            <a class="default-btn"asp-controller="About" asp-action="Index">Learn more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Start Slider Content -->
-</div>
-<!-- End Slingle Slide -->
-<!-- Start Slingle Slide -->
-<div class="single-slide item" style="background-image: url(img/slider/slider1.jpg)">
-    <!-- Start Slider Content -->
-    <div class="slider-content-area">  
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1"> 
-                    <div class="slide-content-wrapper">
-                        <div class="slide-content text-center">
-                            <h2>EDUCATION MAKES HUMANITY </h2>
-                            <p>I must explain to you how all this mistaken idea of denouncing pleasure and prsing pain was born and I will give you a complete account of the system  </p>
-                            <a class="default-btn"asp-controller="About" asp-action="Index">Learn more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Start Slider Content -->
-</div>
-<!-- End Slingle Slide -->								
+<!-- End Slingle Slide -->      
+   }
+
 </div>
 </section>
 <!-- Background Area End -->
@@ -79,15 +42,14 @@ ViewData["Title"] = "Index";
         <div class="row">
             <div class="col-md-6 col-sm-6">
                 <div class="about-content">
-                    <h2>WELCOME TO <span>EDUHOME</span></h2>
-                    <p>I must explain to you how all this mistaken idea of denouncing pleure and prsing pain was born and I will give you a complete account of the system, and expound the actual teachings  the master-builder of humanit happiness</p>
-                    <p class="hidden-sm">I must explain to you how all this mistaken idea of denouncing pleure and prsing pain was born and I will give you a complete account of the system</p>
+                    <h2>@Html.Raw( @homeVM.Abouts.Title)</h2>
+                    <p>@homeVM.Abouts.SubTitle </p>
                     <a class="default-btn"asp-controller="About" asp-action="Index">view courses</a>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6">
                 <div class="about-img">
-                    <img src="~/img/about/about.png" alt="about">
+                    <img src="~/img/about/@homeVM.Abouts.ImagePath" alt="about">
                 </div>
             </div>
         </div>
@@ -96,65 +58,43 @@ ViewData["Title"] = "Index";
 <!-- About End -->
 
 <!-- Courses Area Start -->
-<div class="courses-area two pt-150 pb-150 text-center">
+<div class="courses-area two pt-150 pb-150 text-center" 
+     style="  position: relative;
+              background: url(../img/course/@homeVM.Homes.CourseBackgroundImage);
+              background-size: cover;
+              background-repeat: no-repeat;
+              background-position: center center;
+              background-attachment: fixed;" >
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
                 <div class="section-title">
-                    <img src="~/img/icon/section1.png" alt="section-title">
-                    <h2>COURSES WE OFFER</h2>
+                    <img src="~/img/icon/@homeVM.Homes.CourseIcon" alt="section-title">
+                    <h2>@homeVM.Homes.CourseTitle</h2>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-sm-6 col-xs-12">
+            @foreach (var item in homeVM.Courses)
+           {
+             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="single-course">
                     <div class="course-img">
-                        <a asp-controller="Course" asp-action="Detail"><img src="~/img/course/course1.jpg" alt="course">
+                        <a asp-controller="Course" asp-action="Detail" asp-route-id="@item.Id"><img src="~/img/course/@item.ImagePath" alt="course">
                             <div class="course-hover">
                                 <i class="fa fa-link"></i>
                             </div>
                         </a>
                     </div>
                     <div class="course-content">
-                        <h3><a asp-controller="Course" asp-action="Detail">CSE ENGINEERING</a></h3>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness</p>
-                        <a class="default-btn" asp-controller="Course" asp-action="Detail">read more</a>
+                        <h3><a asp-controller="Course" asp-action="Detail">@item.Name</a></h3>
+                        <p>@item.Description</p>
+                        <a class="default-btn" asp-controller="Course" asp-action="Detail" asp-route-id="@item.Id">read more</a>
                     </div>   
                 </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-course">
-                    <div class="course-img">
-                        <a asp-controller="Course" asp-action="Detail"><img src="~/img/course/course2.jpg" alt="course">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="course-content">
-                        <h3><a asp-controller="Course" asp-action="Detail">political science</a></h3>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness</p>
-                        <a class="default-btn" asp-controller="Course" asp-action="Detail">read more</a>
-                    </div>   
-                </div>
-            </div>
-            <div class="col-md-4 hidden-sm col-xs-12">
-                <div class="single-course">
-                    <div class="course-img">
-                        <a asp-controller="Course" asp-action="Detail"><img src="~/img/course/course3.jpg" alt="course">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="course-content">
-                        <h3><a asp-controller="Course" asp-action="Detail">micro biology</a></h3>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness</p>
-                        <a class="default-btn" asp-controller="Course" asp-action="Detail">read more</a>
-                    </div>   
-                </div>
-            </div>
+            </div> 
+           }
+
         </div>
     </div>
 </div>
@@ -166,10 +106,17 @@ ViewData["Title"] = "Index";
         <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="notice-right-wrapper mb-25 pb-25">
-                    <h3>TAKE A VIDEO TOUR</h3>
-                    <div class="notice-video">
+                    <h3>@homeVM.Homes.NoticeVideoTitle</h3>
+                    <div class="notice-video" 
+                    style="  background: rgba(0, 0, 0, 0) url(../img/notice/@homeVM.Homes.NoticeImage) repeat scroll 0 0;
+                                background-size: cover;
+                                background-repeat: no-repeat;
+                                background-position: center center;
+                                position: relative;
+                                height: 382px;
+                                width: 100%; ">
                         <div class="video-icon video-hover">
-                            <a class="video-popup" href="https://www.youtube.com/watch?v=to6Ghf8UL7o">
+                            <a class="video-popup" href="@homeVM.Homes.YoutubeUrL">
                                 <i class="zmdi zmdi-play"></i>
                             </a>
                         </div>
@@ -178,7 +125,7 @@ ViewData["Title"] = "Index";
             </div>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="notice-left-wrapper">  
-                    <h3>notice board</h3>
+                    <h3>@homeVM.Homes.NoticeTitles</h3>
                     <div class="notice-left">
                         <div class="single-notice-left mb-23 pb-20">
                             <h4>5, June 2017</h4>
@@ -218,100 +165,61 @@ ViewData["Title"] = "Index";
         <div class="row">
                 <div class="col-xs-12">
                 <div class="section-title">
-                    <img src="~/img/icon/section.png" alt="section-title">
-                    <h2>UPCOMMING EVENTS</h2>
+                    <img src="~/img/icon/@homeVM.Homes.EventIcon" alt="section-title">
+                    <h2>@homeVM.Homes.EventTitle</h2>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 col-sm-12 col-xs-12">
-                <div class="single-event mb-35">
-                    <div class="event-img">
-                        <a asp-controller="Event" asp-action="Detail"><img src="~/img/event/event1.jpg" alt="event"></a>
-                    </div>
-                    <div class="event-content text-left">
-                        <h3>20 June 2017</h3>
-                        <h4><a asp-controller="Event" asp-action="Detail">ADVANCE PHP WORKSHOP</a></h4>
-                        <ul>
-                            <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                            <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                        </ul>
-                        <div class="event-content-right">
-                            <a class="default-btn" asp-controller="Event" asp-action="Detail">join now</a>
+                @foreach (var item in @homeVM.Events)
+               {
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                         <div class="single-event hidden-sm hidden-xs">
+                            <div class="event-img">
+                                <a asp-controller="Event" asp-action="Detail" asp-route-id="@item.ID"><img src="~/img/event/@item.EventImage" alt="event"></a>
+                            </div>
+                            <div class="event-content text-left">
+                                <h3>@item.EventDate.ToString("dd MMMM yyyy")</h3>
+                                <h4><a asp-controller="Event" asp-action="Detail"  asp-route-id="@item.ID">@item.Title</a></h4>
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i>@item.StartTime.ToString("h:mm tt") -  @item.EndTime.ToString("h:mm tt").</li>
+                                    <li><i class="fa fa-map-marker"></i>@item.Location</li>
+                                </ul>
+                                <div class="event-content-right">
+                                    <a class="default-btn" asp-controller="Event" asp-action="Detail"  asp-route-id="@item.ID">join now</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="single-event hidden-sm hidden-xs">
-                    <div class="event-img">
-                        <a asp-controller="Event" asp-action="Detail"><img src="~/img/event/event3.jpg" alt="event"></a>
-                    </div>
-                    <div class="event-content text-left">
-                        <h3>16 June 2017</h3>
-                        <h4><a asp-controller="Event" asp-action="Detail">learning english history</a></h4>
-                        <ul>
-                            <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                            <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                        </ul>
-                        <div class="event-content-right">
-                            <a class="default-btn" asp-controller="Event" asp-action="Detail">join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-12 col-xs-12">
-                <div class="single-event mb-35">
-                    <div class="event-img">
-                        <a asp-controller="Event" asp-action="Detail"><img src="~/img/event/event2.jpg" alt="event"></a>
-                    </div>
-                    <div class="event-content text-left">
-                        <h3>18 June 2017</h3>
-                        <h4><a asp-controller="Event" asp-action="Detail">DIGITAL MARKETING ANALYSIS</a></h4>
-                        <ul>
-                            <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                            <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                        </ul>
-                        <div class="event-content-right">
-                            <a class="default-btn" asp-controller="Event" asp-action="Detail">join now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-event hidden-sm hidden-xs">
-                    <div class="event-img">
-                        <a asp-controller="Event" asp-action="Detail"><img src="~/img/event/event3.jpg" alt="event"></a>
-                    </div>
-                    <div class="event-content text-left">
-                        <h3>14 June 2017</h3>
-                        <h4><a asp-controller="Event" asp-action="Detail">UI & UX DESIGNER MEETUP</a></h4>
-                        <ul>
-                            <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                            <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                        </ul>
-                        <div class="event-content-right">
-                            <a class="default-btn" asp-controller="Event" asp-action="Detail">join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+               }
         </div>
     </div>
 </div>
 <!-- Event Area End -->
 
 <!-- Testimonial Area Start -->
-<div class="testimonial-area pt-110 pb-105 text-center">
-    <div class="container">
+<div class="testimonial-area pt-110 pb-105 text-center"
+    style=" background: url(../img/testimonial/@homeVM.Homes.TestimontalBackgroundImage);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: relative;">
+@foreach (var item in @homeVM.Testimontials)
+{
+      <div class="container">
         <div class="row">
             <div class="testimonial-owl owl-theme owl-carousel">
                 <div class="col-md-8 col-md-offset-2 col-sm-12">
                     <div class="single-testimonial">
                         <div class="testimonial-info">
                             <div class="testimonial-img">
-                                <img src="~/img/testimonial/testimonial.jpg" alt="testimonial">
+                                <img src="~/img/testimonial/@item.Image" alt="testimonial">
                             </div>
                             <div class="testimonial-content">
-                                <p>I must explain to you how all this mistaken idea of denoung pleure and praising pain was born and I will give you a coete account of the system, and expound the actual</p>
-                                <h4>David Morgan</h4>
-                                <h5>Student, CSE</h5>
+                                <p>@item.Description</p>
+                                <h4>@item.Name</h4>
+                                <h5>@item.Position</h5>
                             </div>
                         </div>
                     </div>
@@ -319,6 +227,7 @@ ViewData["Title"] = "Index";
             </div>
         </div>
     </div>
+}
 </div>
 <!-- Testimonial Area End -->
 
@@ -328,69 +237,36 @@ ViewData["Title"] = "Index";
         <div class="row">
             <div class="col-xs-12">
                 <div class="section-title text-center">
-                    <img src="~/img/icon/section.png" alt="section-title">
-                    <h2>LATEST FROM BLOG</h2>
+                    <img src="~/img/icon/@homeVM.Homes.BlogIcon" alt="section-title">
+                    <h2>@homeVM.Homes.BlogTitle</h2>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-sm-6 col-xs-12">
+            @foreach (var item in @homeVM.Blogs)
+           {
+             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="single-blog">
                     <div class="blog-img">
-                        <a asp-controller="Blog" asp-action="Detail"><img src="~/img/blog/blog1.jpg" alt="blog"></a>
+                        <a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id"><img src="~/img/blog/@item.ImagePath" alt="blog"></a>
                         <div class="blog-hover">
-                            <a asp-controller="Blog" asp-action="Detail"><i class="fa fa-link"></i></a>
+                            <a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id"><i class="fa fa-link"></i></a>
                         </div>
                     </div>
                     <div class="blog-content">
                         <div class="blog-top">
-                            <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
+                            <p>@item.Writer  /  @item.Date.ToString("dd MMMM yy")  /  <i class="fa fa-comments-o"></i> 4</p>
                         </div>
                         <div class="blog-bottom">
-                            <h2><a asp-controller="Blog" asp-action="Detail">I must explain to you how all this a mistaken idea </a></h2>
-                            <a asp-controller="Blog" asp-action="Detail">read more</a>
+                            <h2><a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id">@item.Title</a></h2>
+                            <a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id">read more</a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-blog">
-                    <div class="blog-img">
-                        <a asp-controller="Blog" asp-action="Detail"><img src="~/img/blog/blog2.jpg" alt="blog"></a>
-                        <div class="blog-hover">
-                            <a asp-controller="Blog" asp-action="Detail"><i class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-top">
-                            <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
-                        </div>
-                        <div class="blog-bottom">
-                            <h2><a asp-controller="Blog" asp-action="Detail">I must explain to you how all this a mistaken idea </a></h2>
-                            <a asp-controller="Blog" asp-action="Detail">read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 hidden-sm col-xs-12">
-                <div class="single-blog">
-                    <div class="blog-img">
-                        <a asp-controller="Blog" asp-action="Detail"><img src="~/img/blog/blog3.jpg" alt="blog"></a>
-                        <div class="blog-hover">
-                            <a asp-controller="Blog" asp-action="Detail"><i class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-top">
-                            <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
-                        </div>
-                        <div class="blog-bottom">
-                            <h2><a asp-controller="Blog" asp-action="Detail">I must explain to you how all this a mistaken idea </a></h2>
-                            <a asp-controller="Blog" asp-action="Detail">read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div> 
+           }
+
+
         </div>
     </div>
 </div>

@@ -1225,7 +1225,7 @@ textarea {
 }
 .video-icon a:hover i{
     color: #EC1C23;
-}
+}/*
 .notice-video {
     background: rgba(0, 0, 0, 0) url("../img/notice/video.jpg") repeat scroll 0 0;
     background-size: cover;
@@ -1234,7 +1234,7 @@ textarea {
     position: relative;
     height: 382px;
     width: 100%;
-}
+}*/
 .video-icon {
     left: 50%;
     position: absolute;
@@ -1401,14 +1401,14 @@ textarea {
     color:#2C2B5E;
 }
 .course-img a:hover::after, .course-img:hover .course-hover{opacity: 1}
-.courses-area.two{
+/*.courses-area.two{
     position: relative;
     background: url(../img/course/course-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
-}
+}*/
 .courses-area.two:after{
     position: absolute;
     left: 0;

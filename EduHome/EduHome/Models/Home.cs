@@ -37,7 +37,8 @@ namespace EduHome.Models
 
         [Required(ErrorMessage = "Boş saxlanıla Bilməz!")]
         public string BlogTitle { get; set; }
-
+        [Required(ErrorMessage = "Boş saxlanıla Bilməz!")]
+        public string TestimontalBackgroundImage { get; set; }
 
     }
 }
