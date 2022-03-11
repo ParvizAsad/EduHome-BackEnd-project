@@ -12,8 +12,15 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
+#nullable restore
+#line 2 "D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\Views\_ViewImports.cshtml"
+using EduHome.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9b65d3d2c5197fa94998fef6cf0f7a42a27fe186", @"/Views/Blog/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"31db14882295d62cfd85a36a4e49a31c533bae3c", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ce7d5c594b3870030487be0ccbd77b54b9df28c6", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Blog_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable
@@ -89,7 +96,7 @@ ViewData["Title"] = "Index";
                 <div class=""single-blog mb-60"">
                     <div class=""blog-img"">
                         <a href=""#"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe1868303", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe1868499", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -114,7 +121,7 @@ ViewData["Title"] = "Index";
                         </div>
                         <div class=""blog-bottom"">
                             <h2>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe1869910", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18610106", async() => {
                 WriteLiteral("I must explain to you how all this a mistaken idea ");
             }
             );
@@ -132,7 +139,7 @@ ViewData["Title"] = "Index";
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</h2>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18611349", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18611546", async() => {
                 WriteLiteral("read more");
             }
             );
@@ -158,7 +165,7 @@ ViewData["Title"] = "Index";
                 <div class=""single-blog mb-60"">
                     <div class=""blog-img"">
                         <a href=""#"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18613009", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18613206", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -183,7 +190,7 @@ ViewData["Title"] = "Index";
                         </div>
                         <div class=""blog-bottom"">
                             <h2>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18614617", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18614814", async() => {
                 WriteLiteral("I must explain to you how all this a mistaken idea ");
             }
             );
@@ -201,7 +208,7 @@ ViewData["Title"] = "Index";
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</h2>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18616057", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18616254", async() => {
                 WriteLiteral("read more");
             }
             );
@@ -227,7 +234,7 @@ ViewData["Title"] = "Index";
                 <div class=""single-blog mb-60"">
                     <div class=""blog-img"">
                         <a href=""#"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18617717", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18617914", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -252,7 +259,7 @@ ViewData["Title"] = "Index";
                         </div>
                         <div class=""blog-bottom"">
                             <h2>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18619325", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18619522", async() => {
                 WriteLiteral("I must explain to you how all this a mistaken idea ");
             }
             );
@@ -270,7 +277,7 @@ ViewData["Title"] = "Index";
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</h2>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18620765", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18620962", async() => {
                 WriteLiteral("read more");
             }
             );
@@ -296,7 +303,7 @@ ViewData["Title"] = "Index";
                 <div class=""single-blog mb-60"">
                     <div class=""blog-img"">
                         <a href=""#"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18622425", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18622622", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -321,7 +328,7 @@ ViewData["Title"] = "Index";
                         </div>
                         <div class=""blog-bottom"">
                             <h2>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18624033", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18624230", async() => {
                 WriteLiteral("I must explain to you how all this a mistaken idea ");
             }
             );
@@ -339,7 +346,7 @@ ViewData["Title"] = "Index";
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</h2>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18625473", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18625670", async() => {
                 WriteLiteral("read more");
             }
             );
@@ -365,7 +372,7 @@ ViewData["Title"] = "Index";
                 <div class=""single-blog mb-60"">
                     <div class=""blog-img"">
                         <a href=""#"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18627133", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18627330", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -390,7 +397,7 @@ ViewData["Title"] = "Index";
                         </div>
                         <div class=""blog-bottom"">
                             <h2>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18628741", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18628938", async() => {
                 WriteLiteral("I must explain to you how all this a mistaken idea ");
             }
             );
@@ -408,7 +415,7 @@ ViewData["Title"] = "Index";
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</h2>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18630181", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18630378", async() => {
                 WriteLiteral("read more");
             }
             );
@@ -434,7 +441,7 @@ ViewData["Title"] = "Index";
                 <div class=""single-blog mb-60"">
                     <div class=""blog-img"">
                         <a href=""#"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18631841", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18632038", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -459,7 +466,7 @@ ViewData["Title"] = "Index";
                         </div>
                         <div class=""blog-bottom"">
                             <h2>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18633449", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18633646", async() => {
                 WriteLiteral("I must explain to you how all this a mistaken idea ");
             }
             );
@@ -477,7 +484,7 @@ ViewData["Title"] = "Index";
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</h2>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18634889", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18635086", async() => {
                 WriteLiteral("read more");
             }
             );
@@ -503,7 +510,7 @@ ViewData["Title"] = "Index";
                 <div class=""single-blog"">
                     <div class=""blog-img"">
                         <a href=""#"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18636543", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18636740", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -528,7 +535,7 @@ ViewData["Title"] = "Index";
                         </div>
                         <div class=""blog-bottom"">
                             <h2>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18638151", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18638348", async() => {
                 WriteLiteral("I must explain to you how all this a mistaken idea ");
             }
             );
@@ -546,7 +553,7 @@ ViewData["Title"] = "Index";
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</h2>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18639591", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18639788", async() => {
                 WriteLiteral("read more");
             }
             );
@@ -572,7 +579,7 @@ ViewData["Title"] = "Index";
                 <div class=""single-blog"">
                     <div class=""blog-img"">
                         <a href=""#"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18641245", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18641442", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -597,7 +604,7 @@ ViewData["Title"] = "Index";
                         </div>
                         <div class=""blog-bottom"">
                             <h2>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18642854", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18643051", async() => {
                 WriteLiteral("I must explain to you how all this a mistaken idea ");
             }
             );
@@ -615,7 +622,7 @@ ViewData["Title"] = "Index";
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</h2>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18644294", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18644491", async() => {
                 WriteLiteral("read more");
             }
             );
@@ -641,7 +648,7 @@ ViewData["Title"] = "Index";
                 <div class=""single-blog"">
                     <div class=""blog-img"">
                         <a href=""#"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18645949", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18646146", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -666,7 +673,7 @@ ViewData["Title"] = "Index";
                         </div>
                         <div class=""blog-bottom"">
                             <h2>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18647558", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18647755", async() => {
                 WriteLiteral("I must explain to you how all this a mistaken idea ");
             }
             );
@@ -684,7 +691,7 @@ ViewData["Title"] = "Index";
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</h2>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18648998", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b65d3d2c5197fa94998fef6cf0f7a42a27fe18649195", async() => {
                 WriteLiteral("read more");
             }
             );

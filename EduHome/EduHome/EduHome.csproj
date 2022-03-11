@@ -95,11 +95,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\ViewModels\" />
-    <Folder Include="ViewComponents\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\files\bower_components\autosize\dist\autosize.min.js" />
     <None Include="wwwroot\files\bower_components\bootstrap-datepicker\dist\js\bootstrap-datepicker.min.js" />
     <None Include="wwwroot\files\bower_components\bootstrap-datepicker\js\bootstrap-datepicker.js" />

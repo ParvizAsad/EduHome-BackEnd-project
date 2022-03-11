@@ -54,14 +54,16 @@ namespace EduHome.Areas.Admin.Controllers
                 return NotFound();
 
             existExpertTitle.Logo = bios.Logo;
-            existExpertTitle.Number1 = bios.Number1;
-            existExpertTitle.Number2 = bios.Number2;
-            existExpertTitle.Number3 = bios.Number3;    
+            existExpertTitle.HeaderNumber1 = bios.HeaderNumber1;
+            existExpertTitle.FooterNumber1 = bios.FooterNumber1;
+            existExpertTitle.FooterNumber2 = bios.FooterNumber2;    
             existExpertTitle.PinterestUrl= bios.PinterestUrl;
             existExpertTitle.FacebookUrl= bios.FacebookUrl;
             existExpertTitle.VcontactUrl= bios.VcontactUrl;
             existExpertTitle.TwitterUrl= bios.TwitterUrl;
             existExpertTitle.Description= bios.Description;
+            existExpertTitle.infoEmail= bios.infoEmail;
+            existExpertTitle.infoSite= bios.infoSite;
 
             await _dbContext.SaveChangesAsync();
 
