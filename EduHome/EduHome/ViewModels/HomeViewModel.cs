@@ -23,6 +23,7 @@ namespace EduHome.ViewModels
         public List<Categories> Categories { get; set; }
         public List<Speaker> Speakers { get; set; }
         public Home Homes { get; set; }
+        public Bios Bios { get; set; }
         public About Abouts { get; set; }
 
 

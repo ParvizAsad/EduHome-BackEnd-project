@@ -1,6 +1,7 @@
 ﻿
 @{
-ViewData["Title"] = "Index";
+    HomeViewModel homeVM = Model;
+    ViewData["Title"] = "Index";
 }
 
 <!-- Banner Area Start -->
@@ -24,231 +25,36 @@ ViewData["Title"] = "Index";
 <div class="event-area three text-center pt-150 pb-150">
     <div class="container">
         <div class="row">
+            @foreach (var item in homeVM.Events)
+           {
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="single-event mb-60">
                     <div class="event-img">
-                        <a asp-controller="Event" asp-action="Detail">
-                            <img src="~/img/event/event5.jpg" alt="event">
+                        <a asp-controller="Event" asp-action="Detail" asp-route-id="@item.ID">
+                            <img src="~/img/event/@item.EventImage" alt="event">
                             <div class="course-hover">
                                 <i class="fa fa-link"></i>
                             </div>
                         </a>
                         <div class="event-date">
-                            <h3>20 <span>jun</span></h3>  
+                            <h3>@item.EventDate.ToString("dd MMMM")</h3>  
                         </div>
                     </div>
                     <div class="event-content text-left">
-                        <h4><a asp-controller="Event" asp-action="Detail">ADVANCE PHP WORKSHOP</a></h4>
+                        <h4><a asp-controller="Event" asp-action="Detail" asp-route-id="@item.ID">@item.Title</a></h4>
                         <ul>
-                            <li><span>time:</span> 9.00 AM - 4.45 PM</li>
-                            <li><span>venue</span> New Yourk City</li>
+                            <li><span>time:</span> @item.StartTime.ToString("h:mm tt") - @item.EndTime.ToString("h:mm tt")</li>
+                            <li><span>venue</span>@item.Location </li>
                         </ul>
                         <div class="event-content-right">
-                            <a class="default-btn" asp-controller="Event" asp-action="Detail">join now</a>
+                            <a class="default-btn" asp-controller="Event" asp-action="Detail" asp-route-id="@item.ID">join now</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-event mb-60">
-                    <div class="event-img">
-                        <a asp-controller="Event" asp-action="Detail">
-                            <img src="~/img/event/event6.jpg" alt="event">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                        <div class="event-date">
-                            <h3>18 <span>jun</span></h3>  
-                        </div>
-                    </div>
-                    <div class="event-content text-left">
-                        <h4><a asp-controller="Event" asp-action="Detail">learning english history</a></h4>
-                        <ul>
-                            <li><span>time:</span> 9.00 AM - 4.45 PM</li>
-                            <li><span>venue</span> New Yourk City</li>
-                        </ul>
-                        <div class="event-content-right">
-                            <a class="default-btn" asp-controller="Event" asp-action="Detail">join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-event mb-60">
-                    <div class="event-img">
-                        <a asp-controller="Event" asp-action="Detail">
-                            <img src="~/img/event/event7.jpg" alt="event">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                        <div class="event-date">
-                            <h3>16 <span>jun</span></h3>  
-                        </div>
-                    </div>
-                    <div class="event-content text-left">
-                        <h4><a asp-controller="Event" asp-action="Detail">UI &amp; UX DESIGNER MEETUP</a></h4>
-                        <ul>
-                            <li><span>time:</span> 9.00 AM - 4.45 PM</li>
-                            <li><span>venue</span> New Yourk City</li>
-                        </ul>
-                        <div class="event-content-right">
-                            <a class="default-btn" asp-controller="Event" asp-action="Detail">join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-event mb-60">
-                    <div class="event-img">
-                        <a asp-controller="Event" asp-action="Detail">
-                            <img src="~/img/event/event8.jpg" alt="event">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                        <div class="event-date">
-                            <h3>14 <span>jun</span></h3>  
-                        </div>
-                    </div>
-                    <div class="event-content text-left">
-                        <h4><a asp-controller="Event" asp-action="Detail">ADVANCE WEB DEVELOPMENT</a></h4>
-                        <ul>
-                            <li><span>time:</span> 9.00 AM - 4.45 PM</li>
-                            <li><span>venue</span> New Yourk City</li>
-                        </ul>
-                        <div class="event-content-right">
-                            <a class="default-btn" asp-controller="Event" asp-action="Detail">join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-event mb-60">
-                    <div class="event-img">
-                        <a asp-controller="Event" asp-action="Detail">
-                            <img src="~/img/event/event9.jpg" alt="event">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                        <div class="event-date">
-                            <h3>12 <span>jun</span></h3>  
-                        </div>
-                    </div>
-                    <div class="event-content text-left">
-                        <h4><a asp-controller="Event" asp-action="Detail">digital marketing analysis</a></h4>
-                        <ul>
-                            <li><span>time:</span> 9.00 AM - 4.45 PM</li>
-                            <li><span>venue</span> New Yourk City</li>
-                        </ul>
-                        <div class="event-content-right">
-                            <a class="default-btn" asp-controller="Event" asp-action="Detail">join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-event mb-60">
-                    <div class="event-img">
-                        <a asp-controller="Event" asp-action="Detail">
-                            <img src="~/img/event/event10.jpg" alt="event">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                        <div class="event-date">
-                            <h3>10 <span>jun</span></h3>  
-                        </div>
-                    </div>
-                    <div class="event-content text-left">
-                        <h4><a asp-controller="Event" asp-action="Detail">Developer's meetup</a></h4>
-                        <ul>
-                            <li><span>time:</span> 9.00 AM - 4.45 PM</li>
-                            <li><span>venue</span> New Yourk City</li>
-                        </ul>
-                        <div class="event-content-right">
-                            <a class="default-btn" asp-controller="Event" asp-action="Detail">join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-event">
-                    <div class="event-img">
-                        <a asp-controller="Event" asp-action="Detail">
-                            <img src="~/img/event/event11.jpg" alt="event">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                        <div class="event-date">
-                            <h3>08 <span>jun</span></h3>  
-                        </div>
-                    </div>
-                    <div class="event-content text-left">
-                        <h4><a asp-controller="Event" asp-action="Detail">WORKSHOP ON MICRO BIOLOGY</a></h4>
-                        <ul>
-                            <li><span>time:</span> 9.00 AM - 4.45 PM</li>
-                            <li><span>venue</span> New Yourk City</li>
-                        </ul>
-                        <div class="event-content-right">
-                            <a class="default-btn" asp-controller="Event" asp-action="Detail">join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 hidden-xs">
-                <div class="single-event">
-                    <div class="event-img">
-                        <a asp-controller="Event" asp-action="Detail">
-                            <img src="~/img/event/event12.jpg" alt="event">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                        <div class="event-date">
-                            <h3>06 <span>jun</span></h3>  
-                        </div>
-                    </div>
-                    <div class="event-content text-left">
-                        <h4><a asp-controller="Event" asp-action="Detail">ADVANCED PHOTOSHOP 2017</a></h4>
-                        <ul>
-                            <li><span>time:</span> 9.00 AM - 4.45 PM</li>
-                            <li><span>venue</span> New Yourk City</li>
-                        </ul>
-                        <div class="event-content-right">
-                            <a class="default-btn" asp-controller="Event" asp-action="Detail">join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 hidden-sm hidden-xs">
-                <div class="single-event">
-                    <div class="event-img">
-                        <a asp-controller="Event" asp-action="Detail">
-                            <img src="~/img/event/event13.jpg" alt="event">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                        <div class="event-date">
-                            <h3>04 <span>jun</span></h3>  
-                        </div>
-                    </div>
-                    <div class="event-content text-left">
-                        <h4><a asp-controller="Event" asp-action="Detail">NEW TREND IN WEBDESIGN</a></h4>
-                        <ul>
-                            <li><span>time:</span> 9.00 AM - 4.45 PM</li>
-                            <li><span>venue</span> New Yourk City</li>
-                        </ul>
-                        <div class="event-content-right">
-                            <a class="default-btn" asp-controller="Event" asp-action="Detail">join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           }
+
+
         </div>
     </div>
 </div>      

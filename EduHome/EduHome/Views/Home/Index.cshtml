@@ -37,24 +37,8 @@
 <!-- Background Area End -->
 
 <!-- About Start -->
-<div class="about-area pb-155">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-6">
-                <div class="about-content">
-                    <h2>@Html.Raw( @homeVM.Abouts.Title)</h2>
-                    <p>@homeVM.Abouts.SubTitle </p>
-                    <a class="default-btn"asp-controller="About" asp-action="Index">view courses</a>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6">
-                <div class="about-img">
-                    <img src="~/img/about/@homeVM.Abouts.ImagePath" alt="about">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@await Component.InvokeAsync("About")
+
 <!-- About End -->
 
 <!-- Courses Area Start -->
@@ -101,62 +85,8 @@
 <!-- Courses Area End -->
 
 <!-- Notice Start -->
-<section class="notice-area two pt-140">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="notice-right-wrapper mb-25 pb-25">
-                    <h3>@homeVM.Homes.NoticeVideoTitle</h3>
-                    <div class="notice-video" 
-                    style="  background: rgba(0, 0, 0, 0) url(../img/notice/@homeVM.Homes.NoticeImage) repeat scroll 0 0;
-                                background-size: cover;
-                                background-repeat: no-repeat;
-                                background-position: center center;
-                                position: relative;
-                                height: 382px;
-                                width: 100%; ">
-                        <div class="video-icon video-hover">
-                            <a class="video-popup" href="@homeVM.Homes.YoutubeUrL">
-                                <i class="zmdi zmdi-play"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div> 
-            </div>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="notice-left-wrapper">  
-                    <h3>@homeVM.Homes.NoticeTitles</h3>
-                    <div class="notice-left">
-                        <div class="single-notice-left mb-23 pb-20">
-                            <h4>5, June 2017</h4>
-                            <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                        </div>
-                        <div class="single-notice-left hidden-sm mb-23 pb-20">
-                            <h4>4, June 2017</h4>
-                            <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                        </div>
-                        <div class="single-notice-left pb-70">
-                            <h4>3, June 2017</h4>
-                            <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                        </div>
-                        <div class="single-notice-left mb-23 pb-20">
-                            <h4>5, June 2017</h4>
-                            <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                        </div>
-                        <div class="single-notice-left hidden-sm mb-23 pb-20">
-                            <h4>4, June 2017</h4>
-                            <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                        </div>
-                        <div class="single-notice-left pb-70">
-                            <h4>3, June 2017</h4>
-                            <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                        </div>
-                    </div>
-                </div>    
-            </div>
-        </div>
-    </div>
-</section>
+@await Component.InvokeAsync("Notice")
+
 <!-- Notice End -->
 
 <!-- Event Area Start -->
@@ -198,37 +128,7 @@
 <!-- Event Area End -->
 
 <!-- Testimonial Area Start -->
-<div class="testimonial-area pt-110 pb-105 text-center"
-    style=" background: url(../img/testimonial/@homeVM.Homes.TestimontalBackgroundImage);
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-attachment: fixed;
-            position: relative;">
-@foreach (var item in @homeVM.Testimontials)
-{
-      <div class="container">
-        <div class="row">
-            <div class="testimonial-owl owl-theme owl-carousel">
-                <div class="col-md-8 col-md-offset-2 col-sm-12">
-                    <div class="single-testimonial">
-                        <div class="testimonial-info">
-                            <div class="testimonial-img">
-                                <img src="~/img/testimonial/@item.Image" alt="testimonial">
-                            </div>
-                            <div class="testimonial-content">
-                                <p>@item.Description</p>
-                                <h4>@item.Name</h4>
-                                <h5>@item.Position</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-            </div>
-        </div>
-    </div>
-}
-</div>
+@await Component.InvokeAsync("Testimontal")
 <!-- Testimonial Area End -->
 
 <!-- Blog Area Start -->

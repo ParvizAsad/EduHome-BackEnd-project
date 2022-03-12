@@ -68,17 +68,17 @@ namespace EduHome.Areas.Admin.Controllers
 
             if (isExistBlog)
             {
-                ModelState.AddModelError("Title", "Bu title-da blog mövcuddur!");
+                ModelState.AddModelError("", "Bu name-də kurs mövcuddur!");
                 return View();
             }
 
-            if (!course.Photo.ContentType.Contains("image"))
+            if (!course.Photo.IsImage())
             {
                 ModelState.AddModelError("Photo", "Yükləməyiniz şəkil olmalıdır");
                 return View();
             }
 
-            if (course.Photo.Length > 1024 * 1000)
+            if (!course.Photo.IsAllowedSize(10))
             {
                 ModelState.AddModelError("Photo", "Yükləməyiniz şəkil 1Mb-dan az olmalıdır");
                 return View();
@@ -86,7 +86,7 @@ namespace EduHome.Areas.Admin.Controllers
 
             var webRootPath = _environment.WebRootPath;
             var fileName = $"{Guid.NewGuid()}-{course.Photo.FileName}";
-            var path = Path.Combine(webRootPath, "img", fileName);
+            var path = Path.Combine(webRootPath, "img/course", fileName);
 
             var fileStream = new FileStream(path, FileMode.CreateNew);
             await course.Photo.CopyToAsync(fileStream);
