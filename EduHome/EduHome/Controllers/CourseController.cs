@@ -67,5 +67,23 @@ namespace EduHome.Controllers
 
         }
 
+        public async Task<IActionResult> Search(string search)
+        {
+            if (string.IsNullOrEmpty(search))
+            {
+                return NoContent();
+            }
+
+
+            var products = await _dbContext.Courses.Where(x=>x.IsDeleted==false)
+                .Where(x => x.Name.ToLower().Contains(search.ToLower()))
+                .ToListAsync();
+
+            return PartialView("_CoursePartialView", products);
+
+
+        }
+
+
     }
 }

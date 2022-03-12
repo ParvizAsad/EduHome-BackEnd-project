@@ -1,10 +1,11 @@
 ﻿using EduHome.Models;
 using EduHome.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.DataAccessLayer
 {
-    public class AppDbContext: DbContext
+    public class AppDbContext: IdentityDbContext<User>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -31,7 +32,7 @@ namespace EduHome.DataAccessLayer
         public DbSet<TeacherDetail> TeacherDetails { get; set; }
         public DbSet<TeacherCategory> TeacherCategorys { get; set; }
         public DbSet<Testimontial> Testimontials { get; set; }
-
+        public DbSet<Contact> Contacts { get; set; }
 
     }
     

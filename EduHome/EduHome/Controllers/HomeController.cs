@@ -67,5 +67,7 @@ namespace EduHome.Controllers
                 Speakers=speaker
             });
         }
+
+
     }
 }
