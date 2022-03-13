@@ -27,9 +27,18 @@
                                     <td >@item.UserName</td>
                                     <td >@item.Email </td>
                                     <td>
-                                        <a class="btn btn-primary" asp-controller="User" asp-action="ChangePassword" asp-route-id="@item.Id">Change Password</a>
-                                        <a class="btn btn-danger" asp-controller="User" asp-action="ChageUserStatus" asp-route-id="@item.Id">Change Activity Status</a>
-                                        <a class="btn btn-success" asp-controller="User" asp-action="ChangeRol" asp-route-id="@item.Id">Change Role</a>
+
+                                        @foreach (var rol in @ViewBag.Rol)
+                                       {
+                                          @if ()
+                                       {
+                                           
+                                       } 
+                                       }
+                                        
+                                        <a class="btn btn-primary" asp-controller="UserAccount" asp-action="ChangePassword" asp-route-id="@item.Id">Change Password</a>
+                                        <a class="btn btn-danger" asp-controller="UserAccount" asp-action="ChageUserStatus" asp-route-id="@item.Id">Change Activity Status</a>
+                                        <a class="btn btn-success" asp-controller="UserAccount" asp-action="ChangeRol" asp-route-id="@item.Id">Change Role</a>
                                     </td>
                                 </tr>
                             }

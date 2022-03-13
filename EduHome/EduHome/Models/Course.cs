@@ -25,7 +25,7 @@ namespace EduHome.Models
         public bool IsDeleted { get; set; } = false;
         public CourseDetail CourseDetail { get; set; }
         public ICollection<CourseCategories> CourseCategories { get; set; }
-        public ICollection<CourseUser> CourseUser { get; set; }
+        public ICollection<CourseModerator> CourseUser { get; set; }
 
 
     }

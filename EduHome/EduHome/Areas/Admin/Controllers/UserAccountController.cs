@@ -1,6 +1,7 @@
 ﻿using EduHome.Areas.Admin.ViewModels;
 using EduHome.DataAccessLayer;
 using EduHome.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,8 +10,8 @@ using System.Threading.Tasks;
 
 namespace EduHome.Areas.Admin.Controllers
 {
-    
     [Area("Admin")]
+    [Authorize]
     public class UserAccountController : Controller
     {
         private readonly UserManager<User> _userManager;
@@ -26,6 +27,10 @@ namespace EduHome.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index(int page = 1)
         {
+
+            var userList = await _userManager.Users.Where(x => x.IsDeleted==false).ToListAsync();
+
+
             int take = 10;
             ViewBag.currentpage = page;
             var users = await _userManager.Users.Skip((page - 1) * take).Take(take).ToListAsync();
@@ -35,7 +40,7 @@ namespace EduHome.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-  
+
             return View(users);
         }
 
@@ -133,7 +138,6 @@ namespace EduHome.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
         public async Task<IActionResult> ChangeRol(string id)
         {
             if (id == null)
@@ -155,9 +159,9 @@ namespace EduHome.Areas.Admin.Controllers
             var roles = _roleManager.Roles.ToList();
             return View(roles);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public async Task<IActionResult> ChangeRol(string id, string NewRole)
         {
             if (id == null && NewRole == null)

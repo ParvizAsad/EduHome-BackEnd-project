@@ -19,7 +19,7 @@ namespace EduHome.DataAccessLayer
         public DbSet<Categories> Categories { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<CourseDetail> CourseDetails { get; set; }
-        public DbSet<CourseUser> CourseUsers { get; set; }
+        public DbSet<CourseModerator> CourseUsers { get; set; }
         public DbSet<CourseCategories> CourseCategories { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<EventCategories> EventCategories { get; set; }
