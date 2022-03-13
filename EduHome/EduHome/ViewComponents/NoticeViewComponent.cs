@@ -19,8 +19,6 @@ namespace EduHome.ViewComponents
         {
             var home = await _dbContext.Homes.SingleOrDefaultAsync();
 
-
-
             return View(new HomeViewModel
             {
                 Homes = home,

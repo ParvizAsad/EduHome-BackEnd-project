@@ -9,36 +9,11 @@ namespace EduHome.ViewModels
 {
     public class CourseViewModel
     {
+        public Course Courses { get; set; }
+        public List<CourseDetail> CourseDetails { get; set; }
+        public List<CourseCategories> CourseCategories { get; set; }
+        public List<Categories> Categories { get; set; }
 
-        public string Name { get; set; }
-
-        public string Description { get; set; }
-
-        public string ImagePath { get; set; }
-
-        public string AboutDescription { get; set; }
-
-        public string ApplyDescription { get; set; }
-
-        public string CertificaitonDescription { get; set; }
-
-        public DateTime StartDay { get; set; }
-
-        public string DurationTime { get; set; }
-
-        public string LessonDurationTime { get; set; }
-
-        public string SkillLevel { get; set; }
-
-        public string Language { get; set; }
-
-        public int studentCapacity { get; set; }
-
-        public string Assestments { get; set; }
-
-        public double Price { get; set; }
-
-        //public List<Categories> Categories { get; set; }
 
     }
 }

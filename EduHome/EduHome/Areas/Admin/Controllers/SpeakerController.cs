@@ -1,6 +1,7 @@
 ﻿using EduHome.Areas.Admin.Data;
 using EduHome.DataAccessLayer;
 using EduHome.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,10 +15,12 @@ namespace EduHome.Areas.Admin.Controllers
     public class SpeakerController : Controller
     {
         private readonly AppDbContext _dbContext;
+        private readonly IWebHostEnvironment _environment;
 
-        public SpeakerController(AppDbContext dbContext)
+        public SpeakerController(AppDbContext dbContext, IWebHostEnvironment environment)
         {
             _dbContext = dbContext;
+            _environment = environment;
         }
 
         public async Task<IActionResult> Index(int page = 1)
@@ -38,47 +41,6 @@ namespace EduHome.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Speaker speaker)
         {
-            #region old
-            //if (!ModelState.IsValid)
-            //          {
-            //              return View();
-            //          }
-            //          var isExistSpeaker = await _dbContext.Speakers.AnyAsync(x => x.Name.ToLower() == speaker.Name.ToLower());
-
-            //          if (isExistSpeaker)
-            //          {
-            //              ModelState.AddModelError("Name", "Bu adda speaker mövcuddur!");
-            //              return View();
-            //          }
-
-            //          if (!speaker.Photo.IsImage())
-            //          {
-            //              ModelState.AddModelError("Photos", $"{speaker.Photo.FileName} - Yuklediyiniz shekil olmalidir.");
-            //              return View();
-            //          }
-
-            //          if (!speaker.Photo.IsAllowedSize(1))
-            //          {
-            //              ModelState.AddModelError("Photos", $"{speaker.Photo.FileName} - shekil 1 mb-dan az olmalidir.");
-            //              return View();
-            //          }
-
-            //          var fileName = await speaker.Photo.GenerateFile(Constants.ImageFolderPath);
-
-            //          var speakers = new Speaker
-            //          {
-            //              ImagePath = fileName,
-            //              Name = speaker.Name,
-            //              Job = speaker.Job
-            //          };
-
-
-            //          await _dbContext.Speakers.AddAsync(speakers);
-            //          await _dbContext.SaveChangesAsync();
-
-            //          return RedirectToAction(nameof(Index));
-            #endregion
-
             if (!ModelState.IsValid)
             {
                 return View();
@@ -103,7 +65,12 @@ namespace EduHome.Areas.Admin.Controllers
                 return View();
             }
 
-            var fileName = await speaker.Photo.GenerateFile(Constants.ImageFolderPath);
+            var webRootPath = _environment.WebRootPath;
+            var fileName = $"{Guid.NewGuid()}-{speaker.Photo.FileName}";
+            var path = Path.Combine(webRootPath, "img/event", fileName);
+
+            var fileStream = new FileStream(path, FileMode.CreateNew);
+            await speaker.Photo.CopyToAsync(fileStream);
 
             var speakers = new Speaker
             {

@@ -22,7 +22,6 @@ namespace EduHome.Models
         
         [NotMapped]
         public IFormFile Photo { get; set; }
-        
         public bool IsDeleted { get; set; } = false;
         public CourseDetail CourseDetail { get; set; }
         public ICollection<CourseCategories> CourseCategories { get; set; }

@@ -36,35 +36,20 @@ namespace EduHome.Controllers
             if (id == null)
                 return BadRequest();
 
-            var course = await _dbContext.Courses.Where(x => x.IsDeleted == false).FirstOrDefaultAsync(c=> c.Id==id);
+             var course = await _dbContext.Courses.Include(x=>x.CourseDetail).FirstOrDefaultAsync(x=>x.Id==id);
+            var coursedetail = await _dbContext.CourseDetails.Where(x => x.CourseID == id).ToListAsync();
+            ViewBag.coursedetail = coursedetail;
 
-            //var coursedetail = await _dbContext.CourseDetails.Where(x => x.CourseID == id).ToListAsync();
-            //ViewBag.CourseDetail = coursedetail;
+            var categories = await _dbContext.Categories.ToListAsync();
+            ViewBag.Categories = categories;
+
+            var blogs = await _dbContext.Blogs.Where(x=> x.IsDeleted==false).Take(3).ToListAsync();
+            ViewBag.Blogs = blogs;
 
             if (course == null)
                 return NotFound();
 
-            CourseViewModel courseDetailVM = new CourseViewModel()
-            {
-                Name = course.Name,
-                AboutDescription = course.CourseDetail.AboutDescription,
-                CertificaitonDescription = course.CourseDetail.CertificaitonDescription,
-                 DurationTime= course.CourseDetail.DurationTime,
-                 Language=course.CourseDetail.Language,
-                 Assestments=course.CourseDetail.Assestments,
-                 LessonDurationTime=course.CourseDetail.LessonDurationTime,
-                 Price=course.CourseDetail.Price,
-                 SkillLevel=course.CourseDetail.SkillLevel,
-                 StartDay=course.CourseDetail.StartDay,
-                 studentCapacity=course.CourseDetail.studentCapacity,
-                 ApplyDescription=course.CourseDetail.ApplyDescription,
-                 ImagePath=course.ImagePath,
-                 Description=course.Description
-                 
-            };
-
-            return View(courseDetailVM);
-
+            return View(course);
         }
 
         public async Task<IActionResult> Search(string search)

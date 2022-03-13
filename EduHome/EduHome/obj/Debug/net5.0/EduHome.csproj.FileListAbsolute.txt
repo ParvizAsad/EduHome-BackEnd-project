@@ -178,6 +178,8 @@ D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net
 D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\_ViewImports.cshtml.g.cs
 D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
 D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\About\Index.cshtml.g.cs
+D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
+D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
 D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Blog\Detail.cshtml.g.cs
 D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Blog\Index.cshtml.g.cs
 D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Contact\Index.cshtml.g.cs
@@ -191,6 +193,7 @@ D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net
 D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Shared\Components\Header\Default.cshtml.g.cs
 D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Shared\Components\Notice\Default.cshtml.g.cs
 D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Shared\Components\Testimontal\Default.cshtml.g.cs
+D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Shared\_CourseSearchPartial.cshtml.g.cs
 D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Teacher\Detail.cshtml.g.cs
 D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Teacher\Index.cshtml.g.cs
@@ -205,6 +208,4 @@ D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net
 D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\EduHome.pdb
 D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\EduHome.genruntimeconfig.cache
 D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\ref\EduHome.dll
-D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Shared\_CourseSearchPartial.cshtml.g.cs
-D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
-D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
+D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Category\Detail.cshtml.g.cs

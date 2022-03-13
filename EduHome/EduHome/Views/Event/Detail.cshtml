@@ -1,4 +1,4 @@
-﻿
+﻿@model Event
 @{
 ViewData["Title"] = "Detail";
 }
@@ -27,46 +27,39 @@ ViewData["Title"] = "Detail";
             <div class="col-md-8">
                 <div class="event-details">
                     <div class="event-details-img">
-                        <img src="~/img/event/event-details.jpg" alt="event-details">
+                        <img src="~/img/event/@Model.EventImage" alt="event-details">
                         <div class="event-date">
-                            <h3>20 <span>jun</span></h3>  
+                            <h3>@Model.EventDate.ToString("dd MMMM")</h3>  
                         </div>
                     </div>
                     <div class="event-details-content">
-                        <h2>ADVANCE WED DEVELOPMENT WORKSHOP</h2>
+                        <h2>@Model.Title</h2>
                         <ul>
-                            <li><span>time : </span>9:30am - 4:45pm</li>
+                            <li><span>time : </span>@Model.StartTime.ToString("h:mm tt") - @Model.EndTime.ToString("h:mm tt")</li>
                             <li><span>venue : </span>Cristal Centre, 254 New Yourk</li>
                         </ul>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness pcias unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit asnatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui </p>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness pcias unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem </p>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness pcias unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
+                        <p>@Model.EventDetail.Description</p>
                         <div class="speakers-area fix">
                             <h4>speakers</h4>
-                            <div class="single-speaker">
+                            @foreach (var item in @ViewBag.SpikerList)
+                           {
+                               <div class="single-speaker">
                                 <div class="speaker-img">
-                                    <img src="~/img/event/speaker1.jpg" alt="speaker">
+                                    <img src="~/img/event/@item.ImagePath" alt="speaker">
                                 </div>
                                 <div class="speaker-name">
-                                    <h5>Anthony Smith</h5>
-                                    <p>CEO, Hastech </p>
+                                    <h5>@item.Name</h5>
+                                    <p>@item.Job</p>
                                 </div>
                             </div>
-                            <div class="single-speaker">
-                                <div class="speaker-img">
-                                    <img src="~/img/event/speaker2.jpg" alt="speaker">
-                                </div>
-                                <div class="speaker-name">
-                                    <h5>Lucy Rose</h5>
-                                    <p>Developer, STD </p>
-                                </div>
-                            </div>
+                           }
                         </div>
                     </div>    
                     <div class="reply-area">
                         <h3>LEAVE A REPLY</h3>
-                        <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut<br> the is lder of human happinescias unde omnis iste natus error sit volptatem </p>
-                        <form id="contact-form" action="http://demo.devitems.com/eduhome/mail.php" method="post">
+                       
+                        <p> @Model.EventDetail.ReplyText </p>
+                        <form id="contact-form"  method="post">
                             <div class="row">
                                 <div class="col-md-12">
                                     <p>Name</p>
@@ -105,12 +98,10 @@ ViewData["Title"] = "Detail";
                     <div class="single-blog-widget mb-50">
                         <h3>categories</h3>
                         <ul>
-                            <li><a href="#">CSS Engineering (10)</a></li>
-                            <li><a href="#">Political Science (12)</a></li>
-                            <li><a href="#">Micro Biology (08)</a></li>
-                            <li><a href="#">HTML5 &amp; CSS3 (15)</a></li>
-                            <li><a href="#">Web Design (20)</a></li>
-                            <li><a href="#">PHP (23)</a></li>
+                          @foreach (var item in ViewBag.Categories)
+                         {
+                           <li><a asp-controller="Category" asp-action="Detail" asp-route-id="@item.ID">@Html.Raw(@item.Name)</a></li>
+                         }
                         </ul>
                     </div>
                     <div class="single-blog-widget mb-50">
@@ -121,45 +112,22 @@ ViewData["Title"] = "Detail";
                     </div>
                     <div class="single-blog-widget mb-50">
                         <h3>latest post</h3>
+                        @foreach (var item in @ViewBag.Blogs)
+                       {
                         <div class="single-post mb-30">
                             <div class="single-post-img">
-                                <a asp-controller="Blog" asp-action="Detail"><img src="~/img/post/post1.jpg" alt="post">
+                                <a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id"><img src="~/img/blog/@item.ImagePath" style="width:50px; height:50px;" alt="post">
                                     <div class="blog-hover">
                                         <i class="fa fa-link"></i>
                                     </div>
                                 </a>
                             </div>
                             <div class="single-post-content">
-                                <h4><a asp-controller="Blog" asp-action="Detail">English Language Course for you</a></h4>
-                                <p>By Alex  /  June 20, 2017</p>
+                                <h4><a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id">@item.Title</a></h4>
+                                <p>@item.Writer  /  @item.Date.ToString("MMMM dd yyyy")</p>
                             </div>
                         </div>
-                        <div class="single-post mb-30">
-                            <div class="single-post-img">
-                                <a asp-controller="Blog" asp-action="Detail"><img src="~/img/post/post2.jpg" alt="post">
-                                    <div class="blog-hover">
-                                        <i class="fa fa-link"></i>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="single-post-content">
-                                <h4><a asp-controller="Blog" asp-action="Detail">Advance Web Design and Develop</a></h4>
-                                <p>By Alex  /  June 20, 2017</p>
-                            </div>
-                        </div>
-                        <div class="single-post">
-                            <div class="single-post-img">
-                                <a asp-controller="Blog" asp-action="Detail"><img src="~/img/post/post3.jpg" alt="post">
-                                    <div class="blog-hover">
-                                        <i class="fa fa-link"></i>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="single-post-content">
-                                <h4><a asp-controller="Blog" asp-action="Detail">English Language Course for you</a></h4>
-                                <p>By Alex  /  June 20, 2017</p>
-                            </div>
-                        </div>
+                       }
                     </div>
                     <div class="single-blog-widget">
                         <h3>tags</h3>

@@ -84,7 +84,7 @@ namespace EduHome.Areas.Admin.Controllers
 
             var webRootPath = _environment.WebRootPath;
             var fileName = $"{Guid.NewGuid()}-{blog.Photo.FileName}";
-            var path = Path.Combine(webRootPath, "img", fileName);
+            var path = Path.Combine(webRootPath, "img/blog", fileName);
 
             var fileStream = new FileStream(path, FileMode.CreateNew);
             await blog.Photo.CopyToAsync(fileStream);

@@ -31,9 +31,25 @@ namespace EduHome.Controllers
             });
         }
 
-        public IActionResult Detail()
+        public async Task<IActionResult> Detail(int? id)
         {
-            return View();
+            if (id == null)
+                return BadRequest();
+
+            var blogs = await _dbContext.Blogs.Include(x => x.BlogDetail).FirstOrDefaultAsync(x => x.Id == id);
+            var blogsdetail = await _dbContext.BlogDetails.Where(x => x.BlogID == id).ToListAsync();
+            ViewBag.blogsdetail = blogsdetail;
+
+            var categories = await _dbContext.Categories.ToListAsync();
+            ViewBag.Categories = categories;
+
+            var blogPost = await _dbContext.Blogs.Where(x => x.IsDeleted == false).Take(3).ToListAsync();
+            ViewBag.Blogs = blogPost;
+
+            if (blogs == null)
+                return NotFound();
+
+            return View(blogs);
         }
     }
 }

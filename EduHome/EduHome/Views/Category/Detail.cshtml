@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="course-area pt-150 pb-150">
+    <div class="container">
+    <div class="row">
+         @foreach (var item in  ViewBag.CourseList)
+            {
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="single-course mb-70">
+                    <div class="course-img">
+                        <a asp-controller="Course" asp-action="Detail" asp-route-id="@item.Id"><img src="~/img/course/@item.ImagePath" alt="course">
+                            <div class="course-hover">
+                                <i class="fa fa-link"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="course-content">
+                        <h3><a asp-controller="Course" asp-action="Detail" asp-route-id="@item.Id">@item.Name</a></h3>
+                        <p>@item.Description</p>
+                        <a class="default-btn" asp-controller="Course" asp-action="Detail" asp-route-id="@item.Id">read more</a>
+                    </div>   
+                </div>
+            </div>
+            }
+             @foreach (var item in  ViewBag.BlogList)
+            {
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="single-blog mb-60">
+                        <div class="blog-img">
+                            <a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id"><img src="~/img/blog/@item.ImagePath" alt="blog"></a>
+                            <div class="blog-hover">
+                                <i class="fa fa-link"></i>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-top">
+                                <p>@item.Writer  / @item.Date.ToString("dd MMMM yyyy")  /  <i class="fa fa-comments-o"></i> 4</p>
+                            </div>
+                            <div class="blog-bottom">
+                                <h2><a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id">@item.Title </a></h2>
+                                <a asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+               @foreach (var item in ViewBag.EventList)
+           {
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="single-event mb-60">
+                    <div class="event-img">
+                        <a asp-controller="Event" asp-action="Detail" asp-route-id="@item.ID">
+                            <img src="~/img/event/@item.EventImage" alt="event">
+                            <div class="course-hover">
+                                <i class="fa fa-link"></i>
+                            </div>
+                        </a>
+                        <div class="event-date">
+                            <h3>@item.EventDate.ToString("dd MMMM")</h3>  
+                        </div>
+                    </div>
+                    <div class="event-content text-left">
+                        <h4><a asp-controller="Event" asp-action="Detail" asp-route-id="@item.ID">@item.Title</a></h4>
+                        <ul>
+                            <li><span>time:</span> @item.StartTime.ToString("h:mm tt") - @item.EndTime.ToString("h:mm tt")</li>
+                            <li><span>venue</span>@item.Location </li>
+                        </ul>
+                        <div class="event-content-right">
+                            <a class="default-btn" asp-controller="Event" asp-action="Detail" asp-route-id="@item.ID">join now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           }       
+
+    </div>
+</div> 
+</div> 
