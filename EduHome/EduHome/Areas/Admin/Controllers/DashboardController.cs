@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EduHome.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class DashboardController : Controller
     {
         public IActionResult Index()

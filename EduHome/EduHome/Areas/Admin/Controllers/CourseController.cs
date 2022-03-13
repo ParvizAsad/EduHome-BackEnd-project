@@ -13,10 +13,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using System.Net.Mail;
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EduHome.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class CourseController : Controller
     {
         private readonly AppDbContext _dbContext;
