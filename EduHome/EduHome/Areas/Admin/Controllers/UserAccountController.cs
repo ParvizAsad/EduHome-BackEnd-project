@@ -1,25 +1,23 @@
 ﻿using EduHome.Areas.Admin.ViewModels;
 using EduHome.DataAccessLayer;
 using EduHome.Models;
-using EduHome.ViewModels;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FrontToBack.Areas.Admin.Controllers
+namespace EduHome.Areas.Admin.Controllers
 {
+    
     [Area("Admin")]
-    public class UserController : Controller
+    public class UserAccountController : Controller
     {
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly AppDbContext _dbContext;
 
-        public UserController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager = null, AppDbContext dbContext = null)
+        public UserAccountController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager = null, AppDbContext dbContext = null)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -33,7 +31,7 @@ namespace FrontToBack.Areas.Admin.Controllers
             var users = await _userManager.Users.Skip((page - 1) * take).Take(take).ToListAsync();
             var roles = await _roleManager.Roles.ToListAsync();
             var userRoles = await _dbContext.UserRoles.ToListAsync();
-            if (users==null && roles==null && userRoles==null)
+            if (users == null && roles == null && userRoles == null)
             {
                 return NotFound();
             }

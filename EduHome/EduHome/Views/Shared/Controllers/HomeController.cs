@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 namespace EduHome.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class HomeController : Controller
+    public class jkHomeController : Controller
     {
         private readonly AppDbContext _dbContext;
 
-        public HomeController(AppDbContext dbContext)
+        public jkHomeController(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -56,14 +56,14 @@ namespace EduHome.Areas.Admin.Controllers
             existExpertTitle.Logo = bios.Logo;
             existExpertTitle.HeaderNumber1 = bios.HeaderNumber1;
             existExpertTitle.FooterNumber1 = bios.FooterNumber1;
-            existExpertTitle.FooterNumber2 = bios.FooterNumber2;
-            existExpertTitle.PinterestUrl = bios.PinterestUrl;
-            existExpertTitle.FacebookUrl = bios.FacebookUrl;
-            existExpertTitle.VcontactUrl = bios.VcontactUrl;
-            existExpertTitle.TwitterUrl = bios.TwitterUrl;
-            existExpertTitle.Description = bios.Description;
-            existExpertTitle.infoEmail = bios.infoEmail;
-            existExpertTitle.infoSite = bios.infoSite;
+            existExpertTitle.FooterNumber2 = bios.FooterNumber2;    
+            existExpertTitle.PinterestUrl= bios.PinterestUrl;
+            existExpertTitle.FacebookUrl= bios.FacebookUrl;
+            existExpertTitle.VcontactUrl= bios.VcontactUrl;
+            existExpertTitle.TwitterUrl= bios.TwitterUrl;
+            existExpertTitle.Description= bios.Description;
+            existExpertTitle.infoEmail= bios.infoEmail;
+            existExpertTitle.infoSite= bios.infoSite;
 
             await _dbContext.SaveChangesAsync();
 

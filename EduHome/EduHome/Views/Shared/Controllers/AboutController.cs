@@ -3,7 +3,7 @@
 namespace EduHome.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class DashboardController : Controller
+    public class AboutsController : Controller
     {
         public IActionResult Index()
         {

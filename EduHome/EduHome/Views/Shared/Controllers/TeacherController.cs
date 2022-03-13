@@ -1,6 +1,7 @@
-﻿using EduHome.Areas.Admin.Data;
-using EduHome.DataAccessLayer;
+﻿using EduHome.DataAccessLayer;
 using EduHome.Models;
+using EduHome.ViewModels;
+using EduHome.Areas.Admin.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,12 +13,13 @@ using System.Threading.Tasks;
 
 namespace EduHome.Areas.Admin.Controllers
 {
-    public class TeacherController : Controller
+    [Area("Admin")]
+    public class sadsadTeacherController : Controller
     {
         private readonly AppDbContext _dbContext;
         private readonly IWebHostEnvironment _environment;
 
-        public TeacherController(AppDbContext dbContext, IWebHostEnvironment environment)
+        public sadsadTeacherController(AppDbContext dbContext, IWebHostEnvironment environment)
         {
             _dbContext = dbContext;
             _environment = environment;
@@ -141,7 +143,6 @@ namespace EduHome.Areas.Admin.Controllers
             await _dbContext.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
-
         }
 
         public async Task<IActionResult> Update(int? id)
@@ -216,5 +217,6 @@ namespace EduHome.Areas.Admin.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
     }
 }

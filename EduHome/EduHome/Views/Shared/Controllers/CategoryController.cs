@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 namespace EduHome.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class CategoryManagmentController : Controller
+    public class CategoryController : Controller
     {
         private readonly AppDbContext _dbContext;
 
-        public CategoryManagmentController(AppDbContext dbContext)
+        public CategoryController(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -23,7 +23,7 @@ namespace EduHome.Areas.Admin.Controllers
             int take = 10;
             ViewBag.totalpage = Math.Ceiling((decimal)_dbContext.Categories.Count() / take);
             ViewBag.currentpage = page;
-            var categories = await _dbContext.Categories.Where(x => x.IsDeleted == false).Skip((page - 1) * take).Take(take).ToListAsync();
+            var categories = await _dbContext.Categories.Where(x=>x.IsDeleted==false).Skip((page - 1) * take).Take(take).ToListAsync();
             return View(categories);
         }
 

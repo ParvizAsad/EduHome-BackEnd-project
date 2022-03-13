@@ -1,0 +1,32 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "ProfileDetail";
+}
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">User Profile</h4>
+                <form class="forms-sample" method="post" >
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+                      <div class="form-group">
+                        <label asp-for="@Model.Email" >Student Email</label>
+                        <input class="form-control" placeholder="@Model.Email" asp-for="@Model.Email"/>
+                        <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                    </div>
+
+                  <div class="form-group">
+                    <label asp-for="@Model.IsSubscribe">IsSubscribe</label>
+                    <input class="form-control" asp-for="@Model.IsSubscribe">
+                    <span asp-validation-for="@Model.IsSubscribe" class="text-danger"></span>
+                </div>
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-light">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

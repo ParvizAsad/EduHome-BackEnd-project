@@ -84,7 +84,6 @@ namespace EduHome.Controllers
             smtp.Send(msg);
             TempData["confirm"] = true;
 
-
             return RedirectToAction(nameof(Login));
         }
 
@@ -142,7 +141,6 @@ namespace EduHome.Controllers
             return View();
         }
 
-        //POST
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ForgotPassword(ForgetPasswordViewModel model)
@@ -244,6 +242,44 @@ namespace EduHome.Controllers
 
             return RedirectToAction(nameof(Index), "Home");
         }
+
+        public async Task<IActionResult> ProfileDetail(string name)
+        {
+            if (name == null)
+                return NotFound();
+
+            var user = await _userManager.FindByNameAsync(name);
+
+            if (user == null)
+                return NotFound();
+
+            return View(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ProfileDetail(string name, User user)
+        {
+            if (name == null)
+                return NotFound();
+
+            var existUser = await _userManager.FindByNameAsync(name);
+            if (existUser == null)
+                return NotFound();
+
+            var isExist = await _userManager.FindByNameAsync(user.Email);
+            if (isExist!=null)
+            {
+                ModelState.AddModelError("Name", "Eyni adda user movcuddur");
+                return View();
+            }
+            existUser.IsSubscribe = user.IsSubscribe;
+
+            await _userManager.UpdateAsync(existUser);
+
+            return RedirectToAction(nameof(Index), "Home");
+        }
+
 
     }
 }

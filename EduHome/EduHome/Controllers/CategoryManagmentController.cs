@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace EduHome.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryManagmentController : Controller
     {
         private readonly AppDbContext _dbContext;
 
-        public CategoryController(AppDbContext dbContext)
+        public CategoryManagmentController(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }

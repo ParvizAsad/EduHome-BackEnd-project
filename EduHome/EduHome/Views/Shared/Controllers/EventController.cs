@@ -2,33 +2,26 @@
 using EduHome.DataAccessLayer;
 using EduHome.Models;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace EduHome.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class EventController : Controller
+    public class sssEventController : Controller
     {
         private readonly AppDbContext _dbContext;
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
         private readonly IWebHostEnvironment _environment;
 
-        public EventController(AppDbContext dbContext, IWebHostEnvironment environment, UserManager<User> userManager, SignInManager<User> signInManager)
+        public sssEventController(AppDbContext dbContext, IWebHostEnvironment environment)
         {
             _dbContext = dbContext;
             _environment = environment;
-            _userManager = userManager;
-            _signInManager = signInManager;
         }
 
         public async Task<IActionResult> Index(int page = 1)
@@ -129,35 +122,6 @@ namespace EduHome.Areas.Admin.Controllers
             await _dbContext.Events.AddAsync(events);
             await _dbContext.SaveChangesAsync();
 
-            var userList = await _userManager.Users.Where(x => x.IsSubscribe == true).ToListAsync();
-
-            foreach (var user in userList)
-            {
-                string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                string link = Url.Action(nameof(VerifyEmail), "Account", new { email = user.Email, token }, Request.Scheme, Request.Host.ToString());
-
-                MailMessage msg = new MailMessage();
-                msg.From = new MailAddress("codep320@gmail.com", "EduHome");
-                msg.To.Add(user.Email);
-                string body = string.Empty;
-                using (StreamReader reader = new StreamReader("wwwroot/template/verifyemail.html"))
-                {
-                    body = reader.ReadToEnd();
-                }
-                msg.Body = body.Replace("{{link}}", link);
-                body = body.Replace("{{name}}", $"Welcome, {user.UserName.ToUpper()}");
-                msg.Subject = "VerifyEmail";
-                msg.IsBodyHtml = true;
-
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
-                smtp.EnableSsl = true;
-                smtp.Credentials = new NetworkCredential("codep320@gmail.com", "codeacademyp320");
-                smtp.Send(msg);
-                TempData["confirm"] = true;
-            }
-
             return RedirectToAction(nameof(Index));
         }
 
@@ -200,7 +164,7 @@ namespace EduHome.Areas.Admin.Controllers
                 return BadRequest();
 
             var events = await _dbContext.Events.FindAsync(id);
-            var eventdetail = await _dbContext.EventDetails.Where(x => x.EventID == id).ToListAsync();
+            var eventdetail= await _dbContext.EventDetails.Where(x=>x.EventID==id).ToListAsync();
             ViewBag.EventDetail = eventdetail;
             if (events == null)
                 return NotFound();
@@ -287,21 +251,6 @@ namespace EduHome.Areas.Admin.Controllers
             await _dbContext.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
-        }
-
-        public async Task<IActionResult> VerifyEmail(string email, string token)
-        {
-            var user = await _userManager.FindByEmailAsync(email);
-            if (user == null)
-            {
-                return BadRequest();
-            }
-
-            await _userManager.ConfirmEmailAsync(user, token);
-            await _signInManager.SignInAsync(user, true);
-            TempData["confirmed"] = true;
-
-            return RedirectToAction(nameof(Index), "Home");
         }
 
     }

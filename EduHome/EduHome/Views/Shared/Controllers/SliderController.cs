@@ -11,11 +11,11 @@ using System.IO;
 namespace EduHome.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class SliderController : Controller
+    public class ssSliderController : Controller
     {
         private readonly AppDbContext _dbContext;
 
-        public SliderController(AppDbContext dbContext)
+        public ssSliderController(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -64,11 +64,9 @@ namespace EduHome.Areas.Admin.Controllers
 
             var fileName = await slider.Photo.GenerateFile(Constants.ImageFolderPath);
 
-            var sliders = new Slider
-            {
-                Path = fileName,
-                Title = slider.Title,
-                SubTitle = slider.SubTitle
+            var sliders = new Slider { Path = fileName,
+            Title=slider.Title,
+            SubTitle=slider.SubTitle
             };
 
             await _dbContext.Sliders.AddAsync(sliders);
@@ -134,7 +132,7 @@ namespace EduHome.Areas.Admin.Controllers
             if (existSliderImage == null)
                 return NotFound();
 
-            if (slider.Photo != null)
+            if (slider.Photo!=null)
             {
                 if (!slider.Photo.IsImage())
                 {
@@ -153,12 +151,12 @@ namespace EduHome.Areas.Admin.Controllers
                 {
                     System.IO.File.Delete(path);
                 }
-                var fileName = await slider.Photo.GenerateFile(Constants.ImageFolderPath);
-                existSliderImage.Path = fileName;
+              var fileName = await slider.Photo.GenerateFile(Constants.ImageFolderPath);
+            existSliderImage.Path = fileName;
             }
-
-            existSliderImage.SubTitle = slider.SubTitle;
-            existSliderImage.Title = slider.Title;
+           
+            existSliderImage.SubTitle=slider.SubTitle;
+            existSliderImage.Title=slider.Title;
 
 
             await _dbContext.SaveChangesAsync();

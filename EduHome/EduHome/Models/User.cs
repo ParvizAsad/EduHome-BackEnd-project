@@ -8,5 +8,6 @@ namespace EduHome.Models
         [Required]
         public string FullName { get; set; }
         public bool IsDeleted { get; set; } = false;
+        public bool IsSubscribe { get; set; } = false;
     }
 }

@@ -59,14 +59,11 @@ namespace EduHome.Controllers
                 return NoContent();
             }
 
-
-            var products = await _dbContext.Courses.Where(x=>x.IsDeleted==false)
+            var courses = await _dbContext.Courses.Where(x=>x.IsDeleted==false)
                 .Where(x => x.Name.ToLower().Contains(search.ToLower()))
                 .ToListAsync();
 
-            return PartialView("_CoursePartialView", products);
-
-
+            return PartialView("_CourseSearchPartial", courses);
         }
 
 

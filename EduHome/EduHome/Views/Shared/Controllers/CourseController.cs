@@ -1,6 +1,7 @@
-﻿using EduHome.Areas.Admin.Data;
-using EduHome.DataAccessLayer;
+﻿using EduHome.DataAccessLayer;
 using EduHome.Models;
+using EduHome.ViewModels;
+using EduHome.Areas.Admin.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,12 +13,13 @@ using System.Threading.Tasks;
 
 namespace EduHome.Areas.Admin.Controllers
 {
-    public class TeacherController : Controller
+    [Area("Admin")]
+    public class ghjCourseController : Controller
     {
         private readonly AppDbContext _dbContext;
         private readonly IWebHostEnvironment _environment;
 
-        public TeacherController(AppDbContext dbContext, IWebHostEnvironment environment)
+        public ghjCourseController(AppDbContext dbContext, IWebHostEnvironment environment)
         {
             _dbContext = dbContext;
             _environment = environment;
@@ -25,15 +27,13 @@ namespace EduHome.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index(int page = 1)
         {
-            var blogdetail = await _dbContext.BlogDetails.ToListAsync();
-            ViewBag.BlogDetail = blogdetail;
-
             int take = 10;
-            ViewBag.totalpage = Math.Ceiling((decimal)_dbContext.Teachers.Count() / take);
+            ViewBag.totalpage = Math.Ceiling((decimal)_dbContext.Courses.Count() / take);
             ViewBag.currentpage = page;
-            var teachers = await _dbContext.Teachers.Where(x => x.IsDeleted == false).Skip((page - 1) * take).Take(take).ToListAsync();
-            return View(teachers);
+            var courses = await _dbContext.Courses.Where(x=>x.IsDeleted==false).Skip((page - 1) * take).Take(take).ToListAsync();
+            return View(courses);
         }
+
         public IActionResult ExportFile()
         {
             return View();
@@ -48,7 +48,7 @@ namespace EduHome.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Teacher teacher, int categoryId)
+        public async Task<IActionResult> Create(Course course, int categoryId)
         {
 
             var categories = await _dbContext.Categories.Where(x => x.IsDeleted == false).ToListAsync();
@@ -64,47 +64,46 @@ namespace EduHome.Areas.Admin.Controllers
             if (parentCategory == null)
                 return BadRequest();
 
-            var isExistBlog = await _dbContext.Teachers.AnyAsync(x => x.Name.ToLower() == teacher.Name.ToLower());
+            var isExistBlog = await _dbContext.Courses.AnyAsync(x => x.Name.ToLower() == course.Name.ToLower());
 
             if (isExistBlog)
             {
-                ModelState.AddModelError("Name", "Bu Name-da teacher mövcuddur!");
+                ModelState.AddModelError("", "Bu name-də kurs mövcuddur!");
                 return View();
             }
 
-            if (!teacher.Photo.ContentType.Contains("image"))
+            if (!course.Photo.IsImage())
             {
                 ModelState.AddModelError("Photo", "Yükləməyiniz şəkil olmalıdır");
                 return View();
             }
 
-            if (teacher.Photo.Length > 1024 * 1000)
+            if (!course.Photo.IsAllowedSize(10))
             {
                 ModelState.AddModelError("Photo", "Yükləməyiniz şəkil 1Mb-dan az olmalıdır");
                 return View();
             }
 
             var webRootPath = _environment.WebRootPath;
-            var fileName = $"{Guid.NewGuid()}-{teacher.Photo.FileName}";
-            var path = Path.Combine(webRootPath, "img/teacher", fileName);
+            var fileName = $"{Guid.NewGuid()}-{course.Photo.FileName}";
+            var path = Path.Combine(webRootPath, "img/course", fileName);
 
             var fileStream = new FileStream(path, FileMode.CreateNew);
-            await teacher.Photo.CopyToAsync(fileStream);
+            await course.Photo.CopyToAsync(fileStream);
 
+            var courseCategories = new List<CourseCategories>();
 
-            var teacherCategories = new List<TeacherCategory>();
-
-            var teacherCategory = new TeacherCategory
+            var courseCategory = new CourseCategories
             {
-                TeacherID = teacher.Id,
+                CourseID = course.Id,
                 CategoriesID = categoryId
             };
-            teacherCategories.Add(teacherCategory);
+            courseCategories.Add(courseCategory);
 
-            teacher.TeacherCategory = teacherCategories;
+            course.CourseCategories = courseCategories;
 
-            teacher.ImagePath = fileName;
-            await _dbContext.Teachers.AddAsync(teacher);
+            course.ImagePath = fileName;
+            await _dbContext.Courses.AddAsync(course);
             await _dbContext.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
@@ -116,28 +115,39 @@ namespace EduHome.Areas.Admin.Controllers
             if (id == null)
                 return NotFound();
 
-            var teacher = await _dbContext.Teachers
-                .Where(x => x.Id == id && x.IsDeleted == false)
+            var category = await _dbContext.Courses
+                .Where(x => x.Id == id && x.IsDeleted==false)
                 .FirstOrDefaultAsync();
-            if (teacher == null)
+            if (category == null)
                 return NotFound();
 
-            return View(teacher);
+            return View(category);
+
+            //if (id == null)
+            //    return NotFound();
+
+            //var course = await _dbContext.Courses
+            //    .Where(x => x.Id == id && x.IsDeleted == false)
+            //    .FirstOrDefaultAsync();
+            //if (course == null)
+            //    return NotFound();
+
+            //return View(course);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Delete")]
-        public async Task<IActionResult> DeleteTeacher(int? id)
+        public async Task<IActionResult> DeleteCourse(int? id)
         {
             if (id == null)
                 return NotFound();
 
-            var teacher = await _dbContext.Teachers.FindAsync(id);
-            if (teacher == null)
+            var course = await _dbContext.Courses.FindAsync(id);
+            if (course == null)
                 return NotFound();
 
-            teacher.IsDeleted = true;
+            course.IsDeleted = true;
             await _dbContext.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
@@ -150,66 +160,66 @@ namespace EduHome.Areas.Admin.Controllers
             ViewBag.Categories = categories;
 
 
-            var teacherCategories = await _dbContext.TeacherCategorys.Where(x => x.TeacherID == id).ToListAsync();
-            ViewBag.teacherCategories = teacherCategories;
+            var courseCategories = await _dbContext.CourseCategories.Where(x => x.CourseID == id).ToListAsync();
+            ViewBag.courseCategories = courseCategories;
 
-            var teacherDetail = await _dbContext.TeacherDetails.Where(x => x.TeaacherID == id).ToListAsync();
-            ViewBag.teacherDetail = teacherDetail;
+            var courseDetail = await _dbContext.CourseDetails.Where(x => x.CourseID == id).ToListAsync();
+            ViewBag.courseDetail = courseDetail;
 
             if (id == null)
                 return NotFound();
 
-            var teacher = await _dbContext.Teachers.FirstOrDefaultAsync(x => x.Id == id);
-            if (teacher == null)
+            var course = await _dbContext.Courses.FirstOrDefaultAsync(x => x.Id == id);
+            if (course == null)
                 return NotFound();
 
-            return View(teacher);
+            return View(course);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(int? id, Teacher teacher)
+        public async Task<IActionResult> Update(int? id, Course course)
         {
             var categories = await _dbContext.Categories.Where(x => x.IsDeleted == false).ToListAsync();
             ViewBag.Categories = categories;
 
-            var teacherCategories = await _dbContext.TeacherCategorys.Where(x => x.TeacherID == id).ToListAsync();
-            ViewBag.teacherCategories = teacherCategories;
+            var courseCategories = await _dbContext.CourseCategories.Where(x => x.CourseID == id).ToListAsync();
+            ViewBag.courseCategories = courseCategories;
 
-            var teacherDetail = await _dbContext.TeacherDetails.Where(x => x.TeaacherID == id).ToListAsync();
-            ViewBag.teacherDetail = teacherDetail;
+            var courseDetail = await _dbContext.CourseDetails.Where(x => x.CourseID == id).ToListAsync();
+            ViewBag.courseDetail = courseDetail;
 
             if (id == null)
                 return NotFound();
 
-            if (id != teacher.Id)
+            if (id != course.Id)
                 return BadRequest();
 
-            var existTeacher = await _dbContext.Teachers.FindAsync(id);
-            if (existTeacher == null)
+            var existCourse = await _dbContext.Courses.FindAsync(id);
+            if (existCourse == null)
                 return NotFound();
 
-            if (teacher.Photo != null)
+            if (course.Photo != null)
             {
-                if (!teacher.Photo.IsImage())
+                if (!course.Photo.IsImage())
                 {
                     ModelState.AddModelError("Photo", "Yuklediyiniz shekil olmalidir.");
-                    return View(existTeacher);
+                    return View(existCourse);
                 }
 
-                if (!teacher.Photo.IsAllowedSize(1))
+                if (!course.Photo.IsAllowedSize(1))
                 {
                     ModelState.AddModelError("Photo", "1 mb-dan az olmalidir.");
-                    return View(existTeacher);
+                    return View(existCourse);
                 }
 
-                var path = Path.Combine(Constants.ImageFolderPath, existTeacher.ImagePath);
+                var path = Path.Combine(Constants.ImageFolderPath, existCourse.ImagePath);
                 if (System.IO.File.Exists(path))
                 {
                     System.IO.File.Delete(path);
                 }
-                var fileName = await teacher.Photo.GenerateFile(Constants.ImageFolderPath);
-                existTeacher.ImagePath = fileName;
+                var fileName = await course.Photo.GenerateFile(Constants.ImageFolderPath);
+                existCourse.ImagePath = fileName;
             }
 
             await _dbContext.SaveChangesAsync();
