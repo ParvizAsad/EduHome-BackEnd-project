@@ -1,4 +1,5 @@
-﻿using EduHome.Models;
+﻿using EduHome.Data;
+using EduHome.Models;
 using EduHome.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -84,6 +85,7 @@ namespace EduHome.Controllers
             smtp.Send(msg);
             TempData["confirm"] = true;
 
+            await _userManager.AddToRoleAsync(user, RoleConstants.UserRole);
             return RedirectToAction(nameof(Login));
         }
 

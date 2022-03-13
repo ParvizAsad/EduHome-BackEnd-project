@@ -35,11 +35,7 @@ namespace EduHome.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
-            //if (!User.IsInRole("Admin"))
-            //{
-
-            //}    
+  
             return View(users);
         }
 
@@ -137,6 +133,68 @@ namespace EduHome.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
+        public async Task<IActionResult> ChangeRol(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            string role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
+            if (role == null)
+            {
+                return BadRequest();
+            }
+            ViewBag.CurrentRole = role;
+
+            var roles = _roleManager.Roles.ToList();
+            return View(roles);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> ChangeRol(string id, string NewRole)
+        {
+            if (id == null && NewRole == null)
+            {
+                return NotFound();
+            }
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            string exRole = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
+            if (exRole == null)
+            {
+                return NotFound();
+            }
+            if (exRole != NewRole)
+            {
+                var result = await _userManager.AddToRoleAsync(user, NewRole);
+                if (!result.Succeeded)
+                {
+
+                    ModelState.AddModelError("", "This is Problem");
+
+                }
+                var RemoveRole = await _userManager.RemoveFromRoleAsync(user, exRole);
+                if (RemoveRole.Succeeded)
+                {
+                    ModelState.AddModelError("", "This is problem");
+                }
+                await _userManager.UpdateAsync(user);
+
+            }
+
+            return RedirectToAction(nameof(Index));
+
+        }
 
     }
 }

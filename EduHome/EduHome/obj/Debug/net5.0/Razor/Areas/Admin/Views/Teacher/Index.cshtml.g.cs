@@ -28,13 +28,20 @@ using EduHome.ViewModels;
 #nullable disable
 #nullable restore
 #line 4 "D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\Areas\Admin\Views\_ViewImports.cshtml"
-using EduHome.Areas.Admin;
+using EduHome.Areas.Admin.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\Areas\Admin\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1deb351f1143b2c19449f17838d1586272b7ebb8", @"/Areas/Admin/Views/Teacher/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"08cb6e4a998efe96486350ce3acf40a3d34d400b", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"79b7b4c63ecbc563a14876e30a534b1dcc22e92d", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Areas_Admin_Views_Teacher_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Teacher>>
     #nullable disable
@@ -82,7 +89,7 @@ using EduHome.Areas.Admin;
 #line default
 #line hidden
 #nullable disable
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1deb351f1143b2c19449f17838d1586272b7ebb87252", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1deb351f1143b2c19449f17838d1586272b7ebb87486", async() => {
                 WriteLiteral("\r\n    Create\r\n");
             }
             );
@@ -133,7 +140,7 @@ using EduHome.Areas.Admin;
 #line hidden
 #nullable disable
             WriteLiteral("</td>\r\n                                       <td>\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1deb351f1143b2c19449f17838d1586272b7ebb810050", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1deb351f1143b2c19449f17838d1586272b7ebb810284", async() => {
                 WriteLiteral("Update");
             }
             );
@@ -165,7 +172,7 @@ using EduHome.Areas.Admin;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1deb351f1143b2c19449f17838d1586272b7ebb812399", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1deb351f1143b2c19449f17838d1586272b7ebb812633", async() => {
                 WriteLiteral("Detail");
             }
             );
@@ -197,7 +204,7 @@ using EduHome.Areas.Admin;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1deb351f1143b2c19449f17838d1586272b7ebb814749", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1deb351f1143b2c19449f17838d1586272b7ebb814983", async() => {
                 WriteLiteral("Delete");
             }
             );
@@ -257,7 +264,7 @@ using EduHome.Areas.Admin;
 #line hidden
 #nullable disable
             WriteLiteral("                    <li class=\"page-item \">\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1deb351f1143b2c19449f17838d1586272b7ebb818531", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1deb351f1143b2c19449f17838d1586272b7ebb818765", async() => {
                 WriteLiteral("Previous");
             }
             );
@@ -327,7 +334,7 @@ WriteAttributeValue("", 2411, ViewBag.CurrentPage == i?"pointer-events:none":"",
 #nullable disable
             EndWriteAttribute();
             WriteLiteral(">\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1deb351f1143b2c19449f17838d1586272b7ebb822439", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1deb351f1143b2c19449f17838d1586272b7ebb822673", async() => {
                 WriteLiteral("\r\n                            ");
 #nullable restore
 #line 62 "D:\P320\4. ASP .NET\2. MVC\EduHome-BackEnd-project\EduHome\EduHome\Areas\Admin\Views\Teacher\Index.cshtml"
@@ -395,7 +402,7 @@ WriteAttributeValue("", 2411, ViewBag.CurrentPage == i?"pointer-events:none":"",
 #line hidden
 #nullable disable
             WriteLiteral("                    <li class=\"page-item\">\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1deb351f1143b2c19449f17838d1586272b7ebb826158", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1deb351f1143b2c19449f17838d1586272b7ebb826392", async() => {
                 WriteLiteral("Next");
             }
             );

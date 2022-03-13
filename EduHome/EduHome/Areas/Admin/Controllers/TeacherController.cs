@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace EduHome.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class TeacherController : Controller
     {
         private readonly AppDbContext _dbContext;

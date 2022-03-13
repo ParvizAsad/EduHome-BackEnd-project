@@ -144,7 +144,6 @@ namespace EduHome.Areas.Admin.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
         public async Task<IActionResult> Delete(int? id)
         {
 

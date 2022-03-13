@@ -1,6 +1,28 @@
+    $(document).ready(function () {
+
+        var searchedCourse;
+
+        $(document).on('keyup', '#searchedCourse', function () {
+            searchedCourse = $(this).val();
+
+            $("#searchedCourse li").slice(1).remove();
+
+            $.ajax({
+                type: "GET",
+                url: "/Course/Search?searchedCourse=" + searchedCourse,
+                success: function (res) {
+
+                    $("#searchedCourse").append(res);
+                }
+            });
+        });
+    })
+
 
 (function ($) {
 "use strict";  
+
+
 
 /*------------------------------------
 	Sticky Menu 
