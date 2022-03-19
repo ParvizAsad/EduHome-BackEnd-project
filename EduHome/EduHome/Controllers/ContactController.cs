@@ -20,11 +20,14 @@ namespace EduHome.Controllers
         {
             var homes = await _dbContext.Homes.SingleOrDefaultAsync();
             var bios = await _dbContext.Bios.SingleOrDefaultAsync();
+            var cotact = await _dbContext.Contacts.SingleOrDefaultAsync();
+
 
             return View(new HomeViewModel
             {
                 Homes = homes,
-                Bios = bios
+                Bios = bios,
+                Contact = cotact
 
             });
         }

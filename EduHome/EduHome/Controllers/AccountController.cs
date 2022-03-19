@@ -1,16 +1,21 @@
 ﻿using EduHome.Data;
 using EduHome.Models;
 using EduHome.ViewModels;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace EduHome.Controllers
 {
+    
     public class AccountController : Controller
     {
         private readonly UserManager<User> _userManager;

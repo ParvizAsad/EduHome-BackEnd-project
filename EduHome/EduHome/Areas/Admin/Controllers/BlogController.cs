@@ -1,6 +1,7 @@
 ﻿using EduHome.Areas.Admin.Data;
 using EduHome.DataAccessLayer;
 using EduHome.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +17,8 @@ using System.Threading.Tasks;
 namespace EduHome.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
+
     public class BlogController : Controller
     {
         private readonly AppDbContext _dbContext;
@@ -262,5 +265,19 @@ namespace EduHome.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index), "Home");
         }
 
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+                return BadRequest();
+
+            var course = await _dbContext.Blogs.FindAsync(id);
+
+            if (course == null)
+                return NotFound();
+
+            return View(course);
+
+        }
     }
 }

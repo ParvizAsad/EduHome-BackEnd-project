@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\P320\\4. ASP .NET\\2. MVC\\EduHome-BackEnd-project\\EduHome\\EduHome\\EduHome.csproj": {}
+    "D:\\P320\\4. ASP .NET\\2. MVC\\BackEnd Final Project\\EduHome-BackEnd-project\\EduHome\\EduHome\\EduHome.csproj": {}
   },
   "projects": {
-    "D:\\P320\\4. ASP .NET\\2. MVC\\EduHome-BackEnd-project\\EduHome\\EduHome\\EduHome.csproj": {
+    "D:\\P320\\4. ASP .NET\\2. MVC\\BackEnd Final Project\\EduHome-BackEnd-project\\EduHome\\EduHome\\EduHome.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\P320\\4. ASP .NET\\2. MVC\\EduHome-BackEnd-project\\EduHome\\EduHome\\EduHome.csproj",
+        "projectUniqueName": "D:\\P320\\4. ASP .NET\\2. MVC\\BackEnd Final Project\\EduHome-BackEnd-project\\EduHome\\EduHome\\EduHome.csproj",
         "projectName": "EduHome",
-        "projectPath": "D:\\P320\\4. ASP .NET\\2. MVC\\EduHome-BackEnd-project\\EduHome\\EduHome\\EduHome.csproj",
+        "projectPath": "D:\\P320\\4. ASP .NET\\2. MVC\\BackEnd Final Project\\EduHome-BackEnd-project\\EduHome\\EduHome\\EduHome.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\P320\\4. ASP .NET\\2. MVC\\EduHome-BackEnd-project\\EduHome\\EduHome\\obj\\",
+        "outputPath": "D:\\P320\\4. ASP .NET\\2. MVC\\BackEnd Final Project\\EduHome-BackEnd-project\\EduHome\\EduHome\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,6 +44,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.Google": {
+              "target": "Package",
+              "version": "[5.0.15, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.14, )"

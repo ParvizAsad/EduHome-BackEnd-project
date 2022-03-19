@@ -3,12 +3,14 @@
     //UserViewModel userViewModel = Model;
     ViewData["Title"] = "Index";
 }
-
+<a class="btn btn-success" asp-controller="UserAccount" asp-action="AddCourse">
+    Moderator add course
+</a>
 <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Blog List</h4>
+                <h4 class="card-title">User List</h4>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -22,25 +24,16 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td >@item.FullName</td>
-                                    <td >@item.UserName</td>
-                                    <td >@item.Email </td>
-                                    <td>
-
-                                        @foreach (var rol in @ViewBag.Rol)
-                                       {
-                                          @if ()
-                                       {
-                                           
-                                       } 
-                                       }
-                                        
-                                        <a class="btn btn-primary" asp-controller="UserAccount" asp-action="ChangePassword" asp-route-id="@item.Id">Change Password</a>
-                                        <a class="btn btn-danger" asp-controller="UserAccount" asp-action="ChageUserStatus" asp-route-id="@item.Id">Change Activity Status</a>
-                                        <a class="btn btn-success" asp-controller="UserAccount" asp-action="ChangeRol" asp-route-id="@item.Id">Change Role</a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td >@item.FullName</td>
+                                <td >@item.UserName</td>
+                                <td >@item.Email </td>
+                                <td>
+                                    <a class="btn btn-primary" asp-controller="UserAccount" asp-action="ChangePassword" asp-route-id="@item.Id">Change Password</a>
+                                    <a class="btn btn-danger" asp-controller="UserAccount" asp-action="ChageUserStatus" asp-route-id="@item.Id">Change Activity Status</a>
+                                    <a class="btn btn-success" asp-controller="UserAccount" asp-action="ChangeRol" asp-route-id="@item.Id">Change Role</a>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>

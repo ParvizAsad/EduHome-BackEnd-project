@@ -7,10 +7,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using EduHome.Areas.Admin.Data;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EduHome.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
+
     public class SliderController : Controller
     {
         private readonly AppDbContext _dbContext;

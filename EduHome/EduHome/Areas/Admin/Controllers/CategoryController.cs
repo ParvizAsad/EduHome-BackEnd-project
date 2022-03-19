@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 namespace EduHome.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
+
     public class CategoryController : Controller
     {
         private readonly AppDbContext _dbContext;

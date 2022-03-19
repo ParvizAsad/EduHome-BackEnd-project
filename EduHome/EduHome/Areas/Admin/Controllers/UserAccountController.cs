@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace EduHome.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class UserAccountController : Controller
     {
         private readonly UserManager<User> _userManager;
@@ -29,7 +29,6 @@ namespace EduHome.Areas.Admin.Controllers
         {
 
             var userList = await _userManager.Users.Where(x => x.IsDeleted==false).ToListAsync();
-
 
             int take = 10;
             ViewBag.currentpage = page;
@@ -198,6 +197,14 @@ namespace EduHome.Areas.Admin.Controllers
 
             return RedirectToAction(nameof(Index));
 
+        }
+
+        public async Task<IActionResult> AddCourse()
+        {
+            var roles = await _roleManager.Roles.ToListAsync();
+            var userList = await _userManager.Users.Include(x=>x.Id).Where(x => x.IsDeleted == false).ToListAsync();
+
+            return View();
         }
 
     }

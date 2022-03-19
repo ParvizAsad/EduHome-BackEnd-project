@@ -25,6 +25,7 @@ namespace EduHome.ViewModels
         public Home Homes { get; set; }
         public Bios Bios { get; set; }
         public About Abouts { get; set; }
+        public Contact Contact { get; set; }
 
 
 

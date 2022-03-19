@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace EduHome.Controllers
 {
-    public class CategoryManagmentController : Controller
+    public class CategoryController : Controller
     {
         private readonly AppDbContext _dbContext;
 
-        public CategoryManagmentController(AppDbContext dbContext)
+        public CategoryController(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -24,22 +24,22 @@ namespace EduHome.Controllers
                 return BadRequest();
             var category = await _dbContext.Categories.Where(x => x.IsDeleted == false).FirstOrDefaultAsync(x => x.ID == id);
 
-            var teachers = await _dbContext.Teachers.Include(x=>x.TeacherCategory).Where(x=>x.IsDeleted==false).ToListAsync();
-            var teacherCategories = await _dbContext.TeacherCategorys.Where(x=>x.CategoriesID==id).ToListAsync();
+            var teachers = await _dbContext.Teachers.Include(x => x.TeacherCategory).Where(x => x.IsDeleted == false).ToListAsync();
+            var teacherCategories = await _dbContext.TeacherCategorys.Where(x => x.CategoriesID == id).ToListAsync();
 
-            var blogs = await _dbContext.Blogs.Where(x=>x.IsDeleted==false).Include(x=>x.BlogCategories).ToListAsync();
+            var blogs = await _dbContext.Blogs.Where(x => x.IsDeleted == false).Include(x => x.BlogCategories).ToListAsync();
             var blogCategories = await _dbContext.BlogCategories.Where(x => x.CategoriesID == id).ToListAsync();
 
-            var courses = await _dbContext.Courses.Where(x=>x.IsDeleted==false).ToListAsync();
+            var courses = await _dbContext.Courses.Where(x => x.IsDeleted == false).ToListAsync();
             var courseCategories = await _dbContext.CourseCategories.Where(x => x.CategoriesID == id).ToListAsync();
 
-            var events = await _dbContext.Events.Where(x=>x.IsDeleted==false).ToListAsync();
+            var events = await _dbContext.Events.Where(x => x.IsDeleted == false).ToListAsync();
             var eventCategories = await _dbContext.EventCategories.Where(x => x.CategoryID == id).ToListAsync();
 
-            List<Teacher> teacherList= new List<Teacher>();
-            List<Blog> blogList= new List<Blog>();
-            List<Event> eventList= new List<Event>();
-            List<Course> courseList= new List<Course>();
+            List<Teacher> teacherList = new List<Teacher>();
+            List<Blog> blogList = new List<Blog>();
+            List<Event> eventList = new List<Event>();
+            List<Course> courseList = new List<Course>();
 
             foreach (var teachercategory in teacherCategories)
             {
@@ -89,6 +89,11 @@ namespace EduHome.Controllers
                 }
             }
             ViewBag.EventList = eventList;
+
+            if (blogList.Count == 0 && teacherList.Count == 0 && courseList.Count == 0 && eventList.Count == 0)
+            {
+                return NotFound();
+            }
 
 
             return View();

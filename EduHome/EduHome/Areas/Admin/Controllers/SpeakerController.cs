@@ -1,6 +1,7 @@
 ﻿using EduHome.Areas.Admin.Data;
 using EduHome.DataAccessLayer;
 using EduHome.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,9 @@ using System.Threading.Tasks;
 namespace EduHome.Areas.Admin.Controllers
 {
         [Area("Admin")]
-        public class SpeakerController : Controller
+    [Authorize(Roles = "Admin")]
+
+    public class SpeakerController : Controller
         {
             private readonly AppDbContext _dbContext;
             private readonly IWebHostEnvironment _environment;

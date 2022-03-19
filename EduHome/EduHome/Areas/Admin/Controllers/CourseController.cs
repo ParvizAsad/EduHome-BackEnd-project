@@ -18,7 +18,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace EduHome.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin, CourseModerator")]
     public class CourseController : Controller
     {
         private readonly AppDbContext _dbContext;
@@ -43,9 +43,10 @@ namespace EduHome.Areas.Admin.Controllers
             return View(courses);
         }
 
-        public IActionResult ExportFile()
+        public async Task<IActionResult> ExportFile()
         {
-            return View();
+            var courses = await _dbContext.Courses.Where(x => x.IsDeleted == false).ToListAsync();
+            return View(courses);
         }
 
         public async Task<IActionResult> Create()
@@ -278,5 +279,22 @@ namespace EduHome.Areas.Admin.Controllers
 
             return RedirectToAction(nameof(Index), "Home");
         }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+                return BadRequest();
+
+            var course = await _dbContext.Courses.FindAsync(id);
+
+            if (course == null)
+                return NotFound();
+
+            return View(course);
+
+        }
+
+  
+
     }
 }

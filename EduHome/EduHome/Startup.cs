@@ -1,6 +1,7 @@
 using EduHome.Areas.Admin.Data;
 using EduHome.DataAccessLayer;
 using EduHome.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -44,6 +45,7 @@ namespace EduHome
                     builder.MigrationsAssembly(nameof(EduHome));
                 });
             });
+
 
             services.AddIdentity<User, IdentityRole>(options =>
             {

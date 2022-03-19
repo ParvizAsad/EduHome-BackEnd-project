@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "0vNT5/NBu3Lwn8oCqDsrCOmmx2D5TpucVoIvDKqA3SAFL+5w2zNSQTia2mN79eT+zrpT7OHlRnKlubrocbeWEw==",
+  "dgSpecHash": "DNjuHnTfF9OFxJndfBptTwwCM4zkNen1r8bC+0x0zpvEtDXBgVpNjErJQKhh1zEE735hZTm3UK/UZVgYmNJ2Sg==",
   "success": true,
-  "projectFilePath": "D:\\P320\\4. ASP .NET\\2. MVC\\EduHome-BackEnd-project\\EduHome\\EduHome\\EduHome.csproj",
+  "projectFilePath": "D:\\P320\\4. ASP .NET\\2. MVC\\BackEnd Final Project\\EduHome-BackEnd-project\\EduHome\\EduHome\\EduHome.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\5.0.15\\microsoft.aspnetcore.authentication.google.5.0.15.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.14\\microsoft.aspnetcore.cryptography.internal.5.0.14.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.14\\microsoft.aspnetcore.cryptography.keyderivation.5.0.14.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

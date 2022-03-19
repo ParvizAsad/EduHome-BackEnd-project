@@ -1,6 +1,7 @@
 ﻿using EduHome.Areas.Admin.Data;
 using EduHome.DataAccessLayer;
 using EduHome.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,8 @@ using System.Threading.Tasks;
 namespace EduHome.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
+
     public class TeacherController : Controller
     {
         private readonly AppDbContext _dbContext;
